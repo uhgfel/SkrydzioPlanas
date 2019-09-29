@@ -1,0 +1,3 @@
+function Funkcija(){
+    alert("test");
+}
