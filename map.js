@@ -9,7 +9,3 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 }).addTo(map);
 
 map.on('click', onMapClick);
-
-var marker = L.marker([54.67, 25.50]).addTo(map);
-marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-marker.addEventListener("click", Funkcija);
