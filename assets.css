@@ -12,3 +12,7 @@ iframe{
     height: 20px;
     width: 20px;
 }
+.SideBar{
+    float: left;
+    width: 300px;
+}

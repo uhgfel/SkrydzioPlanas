@@ -15,15 +15,28 @@
     integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
     crossorigin=""></script>
 
+    <!--Jokubo JS failai-->
     <script src="Testfunctions.js" type="text/javascript"></script>
-    <script src="TaskaiIrKordinates.js" type="text/javascript"></script>
+    <script src="Taskai_ir_kordinates/TaskaiIrKordinates.js" type="text/javascript"></script>
 
 </head>
 <body>
+    <!--
     <input type="text">
     <button onclick="Funkcija()">Kiss my ass</button>
-    <div id="mapid"></div>
-    <script type="text/javascript" src="map.js"></script>
-
+    -->
+    <div class="row">
+            <div class="SideBar">
+                <h1>Skrydžio taškai</h1>
+                <select name="Name" id="Id">
+                    <option value="first">First</option>
+                    <option value="second">Second</option>
+                </select>
+            </div>
+            <div class="SideBar">
+                    <div id="mapid"></div>
+                    <script type="text/javascript" src="map.js"></script>
+            </div>
+    </div>
 </body>
 </html>
