@@ -101,3 +101,9 @@ function onRemovePoint(){
 	MarkerClicked.remove();
 	TempMarker.remove();
 }
+
+function GetCoordinates(){
+	for(var i = 0; i < NodeArray.length; i++){
+		console.log(NodeArray[i].marker._latlng);
+	}
+}
