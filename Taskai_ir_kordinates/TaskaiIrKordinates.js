@@ -18,7 +18,7 @@ function Node(marker, polyline){
 
 //Then map is clicked temporary marker is created
 function onMapClick(e) {
-	CreateTempMarker(e, "<button onClick=\"onAddpoint()\">Add point</button>");
+	CreateTempMarker(e, "<b>kordinates:</b><br/>" + e.latlng.lat + "<br/> " + e.latlng.lng + ". <br/><button onClick=\"onAddpoint()\">Add point</button>");
 }
 
 
