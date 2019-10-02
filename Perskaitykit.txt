@@ -1,4 +1,2 @@
 Labas 123 cia darysim projekta, 
-Jei sita skaitot per Visual studio Code - cia as noriu kitaip padaryt va
-123
-Jei sita skaitot per Visual studio Code - sveikinu visus jus!
+Jei sita skaitot per Visual studio Code - sveikinu.
