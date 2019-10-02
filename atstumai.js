@@ -1,3 +1,0 @@
-function atstumas(){
-    alert("jj");
-}
