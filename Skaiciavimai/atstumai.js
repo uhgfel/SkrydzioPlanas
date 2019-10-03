@@ -9,6 +9,6 @@ function Atstumai(){
         else{
             distan=0;
         }
-        console.log(distan)
+        console.log(distan/1850)
     }   
 }
