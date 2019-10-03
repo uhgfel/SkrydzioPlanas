@@ -4,6 +4,7 @@ var MarkerNeedAdding = false;
 var CurrentNodeIndex = 0;
 var tempPopup;
 
+
 //TempMarker.bindPopup("<iframe src=\"./waypoint.html\"></iframe>").openPopup();
 
 var NodeArray = new Array();
@@ -12,6 +13,7 @@ function Node(marker, polyline){
 	this.polyline = polyline;
 	this.lat = marker.getLatLng().lat;
 	this.lng = marker.getLatLng().lng;
+	this.latlng = marker.getLatLng();
 
 	marker.on('click', onMarkerClicked);
 }
