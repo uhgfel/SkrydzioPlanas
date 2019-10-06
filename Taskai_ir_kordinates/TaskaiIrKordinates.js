@@ -28,7 +28,7 @@ function onMapClick(e) {
 //Then marker is clicked different temporary marker is created with Remove button, allows user to place marker on top or remove previous selection
 function onMarkerClicked(e){
 	MarkerClicked = e.target;
-	let name = NodeArray[GetNodeIndexByMarker(e.target)].Name;
+	let name = NodeArray[GetNodeIndexByMarker(e.target._latlng)].Name;
 	UserTextInput = name;
 	CreateTempMarker(e, "<p><b>" + name + "<p/><b/><button onClick=\"onAddpoint()\">Add point</button><br/><button onClick=\"onRemovePoint()\">RemovePoint</button>")
 }
@@ -49,22 +49,12 @@ function SetTextInput(){
 	}
 }
 
-
 //Executes then "Add Point" is pressed on marker
 function onAddpoint(){
 	SetTextInput();
 
-	if(CurrentNodeIndex > 0){
-		var line = ConnectTwoMarkers(NodeArray[CurrentNodeIndex-1].marker, TempMarker);
-	}
+	PlaceNode(UserTextInput, TempMarker.getLatLng().lat, TempMarker.getLatLng().lng);
 
-	let bpos = TempMarker.getLatLng();
-	var marker = L.marker([bpos.lat, bpos.lng]).addTo(map);
-	var node = new Node(marker, line);
-	NodeArray[CurrentNodeIndex] = node;
-
-	CurrentNodeIndex++;
-	UserTextInput = null;
 	tempPopup.closePopup();
 }
 
@@ -81,55 +71,96 @@ function ConnectTwoMarkers(markerA, markerB){
 }
 
 //Compares markers from NodeArray and finds one that match coordinates with the one that was inputed
-function GetNodeIndexByMarker(marker){
+function GetNodeIndexByMarker(latlng){
 	for(var i = 0; i < NodeArray.length; i++){
-		if(NodeArray[i].marker._latlng == marker._latlng){
+		if(NodeArray[i].marker._latlng == latlng){
 			return i;
 		}
 	}
 	console.log("Not able to find a marker!");
 }
 
-function onRemovePoint(){
-
-	//Finds node to be removed
-	var nodeToRemoveIndex = GetNodeIndexByMarker(MarkerClicked);
-
-	//Removes a line before that node if has any
-	var polyline = NodeArray[nodeToRemoveIndex].polyline;
-	if(polyline != null) polyline.remove();
-
-	//If it has a node in front of it, connects two nodes
-	if(NodeArray[nodeToRemoveIndex+1] != null){
-		NodeArray[nodeToRemoveIndex+1].polyline.remove();
-		if(NodeArray[nodeToRemoveIndex-1] != null){
-			NodeArray[nodeToRemoveIndex+1].polyline = ConnectTwoMarkers(NodeArray[nodeToRemoveIndex-1].marker, NodeArray[nodeToRemoveIndex+1].marker);
-		}
-	}
-
-	//Reorders nodes
-	NodeArray.splice(nodeToRemoveIndex, 1);
-
-	CurrentNodeIndex--;
-
-	var count = 0;
-	for(var i = 0; i < NodeArray.length; i++){
-		count++;
-	}
-
-	MarkerClicked.remove();
-	TempMarker.remove();
-}
-
+//Executes then Save Button is pressed on Temp marker
 function onSavePoint(){
 	SetTextInput();
 	PointAdd(UserTextInput, TempMarker.getLatLng().lat, TempMarker.getLatLng().lng);
 	UserTextInput = null;
 	TempMarker.remove();
 }
+//Executes then Remove point button is pressed
+function onRemovePoint(){
 
-function PrintAllNames(){
-	for(let i = 0; i < NodeArray.length; i++){
-		console.log(NodeArray[i].Name);
+	//Finds node to be removed
+	var nodeToRemoveIndex = GetNodeIndexByMarker(MarkerClicked._latlng);
+
+	RemoveNodeConnectNeighbours(nodeToRemoveIndex);
+
+	MarkerClicked.remove();
+	TempMarker.remove();
+}
+
+function PlaceNode(Name, lat, lng){
+
+	UserTextInput = Name;
+	var marker = L.marker([lat, lng]).addTo(map);
+
+	if(CurrentNodeIndex > 0){
+		var line = ConnectTwoMarkers(NodeArray[CurrentNodeIndex-1].marker, marker);
+	}
+
+
+	var node = new Node(marker, line);
+	NodeArray[CurrentNodeIndex] = node;
+	CurrentNodeIndex++;
+
+	UserTextInput = null;
+}
+
+function RemoveNodeConnectNeighbours(index){		
+	//Removes a line before that node if has any
+	var polyline = NodeArray[index].polyline;
+	if(polyline != null) polyline.remove();
+
+	//If it has a node in front of it, connects two nodes
+	if(NodeArray[index+1] != null){
+		NodeArray[index+1].polyline.remove();
+		if(NodeArray[index-1] != null){
+			NodeArray[index+1].polyline = ConnectTwoMarkers(NodeArray[index-1].marker, NodeArray[index+1].marker);
+		}
+	}
+
+	//Reorders nodes
+	NodeArray.splice(index, 1);
+
+	CurrentNodeIndex--;
+}
+
+//Removes line asociated with that node
+function RemoveLine(index){
+	NodeArray[index].polyline.remove();
+}
+
+function ReplaceNode(index, newlatlng){
+	//Checks if valid index is given
+	if(index > 0 || index < NodeArray.length){
+		NodeArray[index].marker._latlng = newlatlng;
+		//First to replace
+		if(index == 0){
+			RemoveLine(index + 1);
+			ConnectTwoMarkers(NodeArray[index].marker, NodeArray[index + 1].marker);
+		}
+		//Last to replace
+		else if(index == NodeArray.length - 1){
+			RemoveLine(index);
+			ConnectTwoMarkers(NodeArray[index - 1].marker, NodeArray[index].marker);
+		}
+		//Anything in the middle
+		else{
+			RemoveLine(index);
+			RemoveLine(index + 1);
+
+			ConnectTwoMarkers(NodeArray[index - 1].marker, NodeArray[index].marker);
+			ConnectTwoMarkers(NodeArray[index].marker, NodeArray[index + 1].marker);
+		}
 	}
 }

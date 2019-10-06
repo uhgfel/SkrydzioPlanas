@@ -4,7 +4,7 @@ var TriangleIcon = L.icon({
 	iconUrl: 'NuotraukosETC/TriangleMarker.png',
 	shadowUrl: 'NuotraukosETC/TriangleMarker.png',
 
-	iconSize:     [20, 20], // size of the icon
+	iconSize:     [18, 18], // size of the icon
 	shadowSize:   [0, 0], // size of the shadow
 	iconAnchor:   [10, 10], // point of the icon which will correspond to marker's location
 	shadowAnchor: [0, 0],  // the same for the shadow
@@ -27,7 +27,10 @@ function PointRemove(Name){
 
 //Sudeda visus taskus ant zemelapio
 window.onload = function(){
-    this.LoadPoints();
+	this.LoadPoints();
+	this.AddSelector();
+	this.UpdatePointsOnSelectors();
+	//Add event lisiner for point added or removed so that selector would change
 }
 
 function LoadPoints(){
@@ -100,7 +103,7 @@ function LoadPoints(){
 	PointAdd("Videniškiai"	,55.21722222,	25.27694444);
 	PointAdd("Zarasai"	,55.73333333,	26.25      );
 	PointAdd("Zavišonys"	,54.43333333,	25.36666667);
-	PointAdd("Želva"	,0.219722222,	25.09888889);
+	PointAdd("Želva"	,55.2197165492,	25.09888889);
 	PointAdd("EYAL"	,54.41527778,	24.05555556);
 	PointAdd("Kėdainiai"	,55.28722222,	23.95722222);
 	PointAdd("EYMM"	,54.66388889,	23.45194444);
