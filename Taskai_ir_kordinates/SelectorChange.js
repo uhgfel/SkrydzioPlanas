@@ -5,6 +5,7 @@ function UpdatePointsOnSelectors(){
     var Selectors = document.getElementsByClassName("Selector");
     for(let i = 0; i < Selectors.length; i++){
         AddpointsToSelector(Selectors[i]);
+        //console.log(Selectors[i]);
     }
 };
 
@@ -21,31 +22,32 @@ function AddSelector(){
     //  <option value="empty">Pasirinkti taska</option>
 
     let bar = document.getElementById("SelectorBar");
-    let select = document.getElementById("select");
+    //true reiskia, kad kopijuos ir vaikus
+    let Selector = document.getElementsByClassName("SelectorLine")[0].cloneNode(true);
 
-    let br = document.createElement("br");
-    bar.appendChild(br);
-
-    let Selector = document.createElement("select");
-    Selector.setAttribute("class", "Selector");
+    //let Selector = document.createElement("select");
+    //Selector.setAttribute("class", "Selector");
 
     bar.appendChild(Selector);
 
-    CreateOption(Selector, "Pasirinkti taska", "empty");
-    AddpointsToSelector(Selector);
+    //CreateOption(Selector, "Pasirinkti taska", "empty");
 
+    ConfigureSelector(Selector);
+}
 
+function ConfigureSelector(Selector){
+    //AddpointsToSelector(Selector);
     //Adds selector to an array and creates necessary events
     SelectorsArray.push(Selector);
     Selector.onchange = SelectorChangedLast;
+    console.log("last");
     let PrevIndex = SelectorsArray.length-2;
     if(PrevIndex >= 0){
         var doSelectMiddle = (event) => SelectorChanged(event, PrevIndex);
         SelectorsArray[PrevIndex].onchange = doSelectMiddle;
+        console.log("middle added");
     }
 }
-
-
 
 function CreateOption(Selector, Text, value) {
     var para = document.createElement("option");

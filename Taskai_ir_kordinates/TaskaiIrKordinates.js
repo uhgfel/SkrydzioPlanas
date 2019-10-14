@@ -17,6 +17,7 @@ function Node(marker, polyline){
 	this.lat = marker.getLatLng().lat;
 	this.lng = marker.getLatLng().lng;
 	this.Name = UserTextInput;
+	this.latlng = marker.getLatLng();
 
 	marker.on('click', onMarkerClicked);
 }
@@ -141,26 +142,17 @@ function RemoveLine(index){
 }
 
 function ReplaceNode(index, newlatlng){
+	console.log(newlatlng, index);
 	//Checks if valid index is given
 	if(index > 0 || index < NodeArray.length){
 		NodeArray[index].marker._latlng = newlatlng;
-		//First to replace
-		if(index == 0){
-			RemoveLine(index + 1);
-			ConnectTwoMarkers(NodeArray[index].marker, NodeArray[index + 1].marker);
-		}
-		//Last to replace
-		else if(index == NodeArray.length - 1){
-			RemoveLine(index);
-			ConnectTwoMarkers(NodeArray[index - 1].marker, NodeArray[index].marker);
-		}
-		//Anything in the middle
-		else{
-			RemoveLine(index);
-			RemoveLine(index + 1);
+		ReorderNodes();
+	}
+}
 
-			ConnectTwoMarkers(NodeArray[index - 1].marker, NodeArray[index].marker);
-			ConnectTwoMarkers(NodeArray[index].marker, NodeArray[index + 1].marker);
-		}
+function ReorderNodes(){
+	for(var i = 1; i < NodeArray.length; i++){
+		NodeArray[i].polyline.remove();
+		ConnectTwoMarkers(NodeArray[i - 1].marker, NodeArray[i].marker);
 	}
 }

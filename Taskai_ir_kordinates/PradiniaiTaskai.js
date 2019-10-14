@@ -28,8 +28,8 @@ function PointRemove(Name){
 //Sudeda visus taskus ant zemelapio
 window.onload = function(){
 	this.LoadPoints();
-	this.AddSelector();
 	this.UpdatePointsOnSelectors();
+	this.ConfigureSelector(document.getElementsByClassName("Selector")[0]);
 	//Add event lisiner for point added or removed so that selector would change
 }
 
