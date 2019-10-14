@@ -15,22 +15,42 @@
     integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
     crossorigin=""></script>
 
-    <script src="Testfunctions.js" type="text/javascript"></script>
+    <!--Jokubo-->
     <script src="Taskai_ir_kordinates/TaskaiIrKordinates.js" type="text/javascript"></script>
+    <script src="Taskai_ir_kordinates/PradiniaiTaskai.js" type="text/javascript"></script>
+    <script src="Taskai_ir_kordinates/SelectorChange.js" type="text/javascript"></script>
+    <script src="Skaiciavimai/LektuvuParametrai.js" type="text/javascript"></script>
+
+
+    <!--Samuelio-->
+    <script src="Skaiciavimai/atstumai.js"></script>
 
 </head>
 <body>
-    <input type="text">
-    <button onclick="Funkcija()">Kiss my ass</button>
     <div class="row">
             <div class="SideBar">
                 <h1>Skrydžio taškai</h1>
-                <select name="Name" id="Id">
-                    <option value="first">First</option>
-                    <option value="second">Second</option>
-                </select>
+                <button onclick="Atstumai()">Skaiciuoja atstumus</button>
+                <br/>
                 <div>
-                    <button onClick="GetCoordinates">TestButton</button>
+                    <select onchange="AircraftSelected()">
+                        <option value="-">Pasirinkti lektuva</option>
+                        <option value="C152">C152</option>
+                        <option value="C172">C172</option>
+                        <option value="CabriG2">CabriG2</option>
+                    </select>
+                </div>
+
+                <div id="SelectorBar">
+                    <div class="SelectorLine">
+                        <select class="Selector" onchange="SelectorChanged()">
+                            <option value="empty">Pasirinkti taska</option>
+                        </select>
+                        <button>X</button>
+                    </div>
+                </div>
+                <div>
+                    <button onClick="TestFunction()">TestButton</button>
                 </div>
             </div>
             <div class="SideBar">
