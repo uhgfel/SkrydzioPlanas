@@ -51,6 +51,7 @@ function CreateTempMarker(e, Buttons) {
 	tempPopup = TempMarker.bindPopup(Buttons).openPopup();
 	tempPopup.on('popupclose', function () {
 		TempMarker.remove();
+		UserTextInput = null;
 	});
 }
 
