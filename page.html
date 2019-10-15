@@ -19,6 +19,7 @@
     <script src="Taskai_ir_kordinates/TaskaiIrKordinates.js" type="text/javascript"></script>
     <script src="Taskai_ir_kordinates/PradiniaiTaskai.js" type="text/javascript"></script>
     <script src="Taskai_ir_kordinates/SelectorChange.js" type="text/javascript"></script>
+    <script src="Skaiciavimai/LektuvuParametrai.js" type="text/javascript"></script>
 
 
     <!--Samuelio-->
@@ -31,6 +32,14 @@
                 <h1>Skrydžio taškai</h1>
                 <button onclick="Atstumai()">Skaiciuoja atstumus</button>
                 <br/>
+                <div>
+                    <select id="AircraftSelector" onchange="AircraftSelected()">
+                        <option value="NaN">Pasirinkti lektuva</option>
+                        <option value="C152">C152</option>
+                        <option value="C172">C172</option>
+                        <option value="CabriG2">CabriG2</option>
+                    </select>
+                </div>
                 <div id="SelectorBar">
                     <div class="SelectorLine">
                         <!--Pirmas narys SELECT antras BUTTON (Butinai)-->
