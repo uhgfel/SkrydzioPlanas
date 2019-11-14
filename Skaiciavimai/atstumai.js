@@ -21,3 +21,10 @@ function Atstumai(){
     console.log(distanar);
     console.log("bendras lygus ", distanall/1850)
 }
+
+function iterpti(){
+    for(var i = 0; distanar.length; i++){
+        document.getElementById("atstumas" + i.toString()).value = distanar[1];
+    }
+
+}
