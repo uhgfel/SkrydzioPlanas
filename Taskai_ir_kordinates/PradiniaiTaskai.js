@@ -1,5 +1,7 @@
+//Point is described as marker at spesific location. Saved points on the map.
 var PointArray = new Array();
 
+//Describes how saved points should be displayed
 var TriangleIcon = L.icon({
 	iconUrl: 'NuotraukosETC/TriangleMarker.png',
 	shadowUrl: 'NuotraukosETC/TriangleMarker.png',
@@ -11,6 +13,7 @@ var TriangleIcon = L.icon({
 	popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
 });
 
+//Adds saved point with appropriate popup
 function PointAdd(Name, lat, lng){
      PointArray[Name] = L.marker([lat, lng], {icon: TriangleIcon})
         .addTo(map)
@@ -20,19 +23,15 @@ function PointAdd(Name, lat, lng){
         });
 }
 
-function PointRemove(Name){
-    PointArray[Name].remove();
-    PointArray.splice(Name, 1);
-}
-
-//Sudeda visus taskus ant zemelapio
+//Executes then page is loaded
 window.onload = function(){
 	this.LoadPoints();
-	this.UpdatePointsOnSelectors();
-	this.ConfigureSelector(document.getElementsByClassName("Selector")[0]);
+	this.LoadAllSelectorsOptions();
+	this.ConfigureSelector(document.getElementsByClassName("SelectorLine")[0]);
 	//Add event lisiner for point added or removed so that selector would change
 }
 
+//Loads points (in future need to make text file read and write if possible)
 function LoadPoints(){
     PointAdd("Alanta"   ,55.35111111,   25.29527778);
     PointAdd("Alytus"   ,54.41444444,   24.05833333);
