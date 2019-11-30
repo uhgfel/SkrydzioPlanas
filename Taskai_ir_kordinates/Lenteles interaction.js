@@ -1,6 +1,17 @@
 // Make the DIV element draggable:
 window.onload = function(){
   dragElement(document.getElementById("mydiv"));
+
+  var coll = document.getElementById("TableButton");
+
+  coll.addEventListener("click", function() {
+    var content = document.getElementById("content");
+    if (content.style.display === "block") {
+     content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
 }
 
 function dragElement(elmnt) {
