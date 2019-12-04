@@ -20,7 +20,7 @@
     <script src="Taskai_ir_kordinates/PradiniaiTaskai.js" type="text/javascript"></script>
     <script src="Taskai_ir_kordinates/SelectorChange.js" type="text/javascript"></script>
     <script src="Skaiciavimai/LektuvuParametrai.js" type="text/javascript"></script>
-
+    <script src="Taskai_ir_kordinates/Lenteles interaction.js"></script>
 
     <!--Samuelio-->
     <script src="Skaiciavimai/atstumai.js"></script>
@@ -49,14 +49,97 @@
                         <button onclick="Remove(this)">X</button>
                     </div>
                 </div>
-                <div>
-                    <button onClick="TestFunction()">TestButton</button>
-                </div>
             </div>
             <div class="SideBar">
                     <div id="mapid"></div>
                     <script type="text/javascript" src="map.js"></script>
             </div>
     </div>
+
+    <!-- Lentele -->
+    <div id="mydiv">
+            <div id="header">
+                <p>Skrydžio planas</p>
+                <button id=TableButton> + </button>
+            </div>
+            <!--Cia lentele dek po situ-->
+            <table id="content" style="undefined;table-layout: fixed; width: 688px">
+                    <colgroup>
+                    <col style="width: 122px">
+                    <col style="width: 105px">
+                    <col style="width: 114px">
+                    <col style="width: 116px">
+                    <col style="width: 122px">
+                    <col style="width: 109px">
+                    </colgroup>
+                      <tr>
+                        <td class="cabrig2">Vieta</td>
+                        <td class="cabrig2">Kursas</td>
+                        <td class="cabrig2">Vėjas</td>
+                        <td class="cabrig2">Atstumas</td>
+                        <td class="cabrig2">Laikas iki taško</td>
+                    
+                      </tr>
+                      <tr>
+                        <td id="vieta1" class="cabrig2">EYVK</td>
+                        <td class="cabrig2"></td>
+                        <td class="cabrig2"></td>
+                        <td class="cabrig2"></td>
+                        <td class="cabrig2"></td>
+                      </tr>
+                      <tr>
+                        <td id="vieta2" class="cabrig2">Rukainiai</td>
+                        <td class="cabrig2">ukfykufy</td>
+                        <td class="cabrig2">yukyk</td>
+                        <td class="cabrig2">yukfyuk</td>
+                        <td class="cabrig2">yfukfyuk</td>
+                      </tr>
+                      <tr>
+                        <td id="vieta3" class="cabrig2">EPINI</td>
+                        <td class="cabrig2"></td>
+                        <td class="cabrig2"></td>
+                        <td class="cabrig2"></td>
+                        <td class="cabrig2"></td>
+                      </tr>
+                      <tr>
+                        <td id="vieta4" class="cabrig2">VNO</td>
+                        <td class="cabrig2"></td>
+                        <td class="cabrig2">hgjfghjfgj</td>
+                        <td class="cabrig2"></td>
+                        <td class="cabrig2"></td>
+                      </tr>
+                      <tr>
+                        <td id="vieta5" class="cabrig2">LEDVI</td>
+                        <td class="cabrig2"></td>
+                        <td class="cabrig2"></td>
+                        <td class="cabrig2"></td>
+                        <td class="cabrig2"></td>
+                      </tr>
+                      <tr>
+                        <td id="vieta6" class="cabrig2">Pikeliškės</td>
+                        <td class="cabrig2"></td>
+                        <td class="cabrig2"></td>
+                        <td class="cabrig2"></td>
+                        <td class="cabrig2"></td>
+                      </tr>
+                      <tr>
+                        <td id="vieta7" contenteditable="" =cabrig2></td>
+                        <td class="cabrig2"></td>
+                        <td class="cabrig2"></td>
+                        <td class="cabrig2"></td>
+                        <td class="cabrig2"></td>
+                      </tr>
+                      <tr>
+                        <td id="vieta8" contenteditable="" =cabrig2></td>
+                        <td class="cabrig2"></td>
+                        <td class="cabrig2"></td>
+                        <td class="cabrig2"></td>
+                        <td class="cabrig2"></td>
+                      </tr>
+                     
+                    </table>
+            <!--Lentele baigiasi cia-->
+    </div>
+
 </body>
 </html>
