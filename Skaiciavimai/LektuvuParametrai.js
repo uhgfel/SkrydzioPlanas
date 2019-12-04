@@ -17,7 +17,7 @@ function AircraftSelected(){
             CruisingSpeed = 100;
             break;
         case "CabriG2":
-            FuelConsumption = 38; //biski per daug ne?
+            FuelConsumption = 38; //biski per daug ne? gerai čia
             CruisingSpeed = 80;
             break;
     }
