@@ -28,6 +28,7 @@ window.onload = function(){
 	this.LoadPoints();
 	this.LoadAllSelectorsOptions();
 	this.ConfigureSelector(document.getElementsByClassName("SelectorLine")[0]);
+	this.LoadTable();
 	//Add event lisiner for point added or removed so that selector would change
 }
 

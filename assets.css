@@ -29,11 +29,11 @@ iframe{
     margin: 5px 0px 5px 30px;
     min-width :150px;
     border: none;
-    box-shadow: 0px 0px 35px -13px rgba(0,0,0,0.55);
+    box-shadow: 0px 0px 35px -13px rgba(0,0,0,0.35);
 }
 .option-style button{
     padding:  10px;
-    margin: 15px 0px 15px 30px;
+    margin: 5px 0px 5px 30px;
     border: none;
     min-width: 35px;
     background-color: #2196F3;
@@ -51,25 +51,29 @@ iframe{
     background-color: #f1f1f1;
     border: 1px solid #d3d3d3;
     text-align: center;
-  }
-  #header {
-    padding: 10px;
-    cursor: move;
-    z-index: 10;
-    background-color: #2196F3;
-    color: #fff;
 }
-#TableButton{
-    float: right;
-    margin-top: -50px;
-    border: solid 1px rgb(23, 102, 167);
-    border-radius: 50px;
-    padding: 10px;
-    width: 40px;
-    color: rgb(65, 65, 65);
-    background-color: white;
-    font-weight: 900;
-}
-#TableButton:hover{
-    background-color: rgb(192, 192, 192);
-}
+
+/*Lentele*/
+    #header {
+        padding: 10px;
+        cursor: move;
+        z-index: 10;
+        background-color: #2196F3;
+        color: #fff;
+    }
+    /*button*/
+        #TableButton{
+            float: right;
+            margin-top: -50px;
+            margin-right: -50px;
+            border: solid 1px rgb(23, 102, 167);
+            border-radius: 50px;
+            padding: 10px;
+            width: 40px;
+            color: rgb(65, 65, 65);
+            background-color: white;
+            font-weight: 900;
+        }
+        #TableButton:hover{
+            background-color: rgb(192, 192, 192);
+        }

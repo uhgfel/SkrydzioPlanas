@@ -1,10 +1,13 @@
 // Make the DIV element draggable:
-window.onload = function(){
+function LoadTable(){
   dragElement(document.getElementById("mydiv"));
 
-  var coll = document.getElementById("TableButton");
+  var button = document.getElementById("TableButton");
+  //Sets table small initially
+  content.style.display = "none";
 
-  coll.addEventListener("click", function() {
+  //Executes if button is pressed
+  button.addEventListener("click", function() {
     var content = document.getElementById("content");
     if (content.style.display === "block") {
      content.style.display = "none";
