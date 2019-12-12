@@ -137,6 +137,8 @@ function PlaceNode(Name, lat, lng){
 	CurrentNodeIndex++;
 
 	UserTextInput = null;
+
+	PerskaiciuotiAtstumus();
 }
 
 //Removes node with spesific index from map and array
@@ -161,6 +163,8 @@ function RemoveNode(index){
 	CurrentNodeIndex--;
 
 	RemoveSelectorLine(index);
+
+	PerskaiciuotiAtstumus();
 }
 
 //Places node in new location
