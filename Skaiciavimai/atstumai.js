@@ -1,6 +1,11 @@
 var distan;
 var distanar = Array();
 var distanall=0;
+
+function PerskaiciuotiAtstumus(){
+    //Skaiciavimo logika nurodyk cia
+}
+
 function Atstumai(){
     //Paspausi ant webo desini ir inspect, tada consolej matysi output
     for(var i = 1; i < NodeArray.length; i++){   
@@ -52,16 +57,15 @@ time1=distanar[i-1]/CruisingSpeed;
 time2=time1*60;
 fuel1=time1*FuelConsumption;
 timear[i-1]=time2;
-fuelar[i-1]=fuel1;}
+fuelar[i-1]=fuel1; }
 var blokas =[distanar,headingar,timear,fuelar];
-var blokasss ={distanar, headingar}//nereikia sito
 console.log("PARAMETRAI: \n 1 atstumas \n 2 heading \n 3 laikas \n 4 reikiamas kuras",blokas);
 
 }
-
-blokas.distanar[3];//nereikia sito
 
 function iterpti(){
     for(var i = 0; distanar.length; i++){
         document.getElementById("atstumas" + i.toString()).value = distanar[1]; }
 }
+//var table = document.getElementById ("content");
+//table.reload ();
