@@ -3,7 +3,19 @@ var distanar = Array();
 var distanall=0;
 
 function PerskaiciuotiAtstumus(){
-    //Skaiciavimo logika nurodyk cia
+    Atstumai();
+    SpeedFuel();
+    GautiHeadinga();
+
+    SurasytTaskus();
+    
+}
+
+function SurasytTaskus(){
+    for(var i = 1;i<NodeArray.length; i++){
+        document.getElementById("vieta" +i.toString()).innerHTML = NodeArray[i].Name;
+        document.getElementById("vieta" +i.toString()).innerHTML = NodeArray[i].Name;
+    }
 }
 
 function Atstumai(){
