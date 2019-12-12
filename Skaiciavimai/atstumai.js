@@ -52,7 +52,7 @@ time1=distanar[i-1]/CruisingSpeed;
 time2=time1*60;
 fuel1=time1*FuelConsumption;
 timear[i-1]=time2;
-fuelar[i-1]=fuel1;}
+fuelar[i-1]=fuel1; }
 var blokas =[distanar,headingar,timear,fuelar];
 var blokasss ={distanar, headingar}//nereikia sito
 console.log("PARAMETRAI: \n 1 atstumas \n 2 heading \n 3 laikas \n 4 reikiamas kuras",blokas);
@@ -65,3 +65,5 @@ function iterpti(){
     for(var i = 0; distanar.length; i++){
         document.getElementById("atstumas" + i.toString()).value = distanar[1]; }
 }
+//var table = document.getElementById ("content");
+//table.reload ();
