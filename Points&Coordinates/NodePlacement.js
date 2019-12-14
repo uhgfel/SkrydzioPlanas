@@ -15,6 +15,28 @@ var tempPopup;
 //Text that user wrote in popup
 var UserTextInput;
 
+//Converts indivudual coordinate to degrees, minutes, seconds format
+function toDegreesMinutesAndSeconds(coordinate) {
+    var absolute = Math.abs(coordinate);
+    var degrees = Math.floor(absolute);
+    var minutesNotTruncated = (absolute - degrees) * 60;
+    var minutes = Math.floor(minutesNotTruncated);
+    var seconds = Math.floor((minutesNotTruncated - minutes) * 60);
+
+    return degrees + "°" + minutes + "'" + seconds + "\"";
+}
+
+//Converts decimal latitude and longtitude to presentable format
+function convertDMS(lat, lng) {
+    var latitude = toDegreesMinutesAndSeconds(lat);
+    var latitudeCardinal = lat >= 0 ? "N" : "S";
+
+    var longitude = toDegreesMinutesAndSeconds(lng);
+    var longitudeCardinal = lng >= 0 ? "E" : "W";
+
+    return latitude + latitudeCardinal + "\n" + longitude + longitudeCardinal;
+}
+
 //Nodes define everything that user defined and objects on the map.
 var NodeArray = new Array();
 function Node(marker, polyline){
@@ -31,7 +53,7 @@ function Node(marker, polyline){
 //Then map is clicked temporary marker is created
 //"Add point", "Save point" functionality
 function onMapClick(e) {
-	CreateTempMarker(e, "<b>kordinates:</b><br/>" + e.latlng.lat + "<br/> " + e.latlng.lng + ". <br/><input id=\"Input\" type=\"text\"><br/><button onClick=\"onAddpoint()\">Add point</button><br/><button onClick=\"onSavePoint()\">SavePoint</button>");
+	CreateTempMarker(e, "<b>kordinates:</b><br/>" + convertDMS(e.latlng.lat, e.latlng.lng) + ". <br/><input id=\"Input\" type=\"text\"><br/><button onClick=\"onAddpoint()\">Add point</button><br/><button onClick=\"onSavePoint()\">SavePoint</button>");
 }
 //Then marker is clicked different temporary marker is created with Remove button, allows user to place marker on top or remove previous selection
 //"Add point" adds point on top (usefull then defining root forwards and backwards through the same path)
