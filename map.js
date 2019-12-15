@@ -18,32 +18,7 @@ map.on('click', onMapClick);
         iconSize: [20, 20],
     });
 
-function AddAerodrome(Lat, Lng, PilnasPavadinimas, LOC_Identification,
-                      Elevation, Frequency, RWY_lenght, DrawCircle){
-    //Button layout
-    var PopUp = "<b>" + PilnasPavadinimas + 
-    "</b><br>Location indicator: " + LOC_Identification +
-    "<br>ELEV: " + Elevation +
-    "'<br>Frequency: " + Frequency +
-    " MHz<br>RWY lenght: " +  RWY_lenght +
-    "<br><button onClick=\"onAddpoint()\">Add point</button><br/>";
 
-    //Circle
-    if(DrawCircle){
-        L.circle([Lat, Lng], {
-            color: '#33D5FF',
-            radius: 5000
-        }).addTo(map);
-    }
-
-    //Add marker with appropriate events and make accessible in selector bar
-    PointArray[LOC_Identification] = L.marker([Lat, Lng], {icon: greenIcon}).addTo(map)
-    .addTo(map)
-    .on('click', function(e){
-        CreateTempMarker(e,PopUp);
-        UserTextInput = LOC_Identification;
-    });
-}
 
 //#"Region" gali ir pats taip surasinet, jie kodo nekeicia, tik palengvina gyvenima :)
 //paspausk prie kodo eiluciu numeravimo rodyklele ir susiskleis
