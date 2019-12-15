@@ -34,8 +34,20 @@ window.onload = function(){
 
 //Loads points (in future need to make text file read and write if possible)
 function LoadPoints(){
+
+	PointAdd("EYDR"	,54.01611111,	23.94444444);
+	PointAdd("EYKA"	,54.95972222,	24.06527778);
+	PointAdd("EYKL"	,55.71527778,	21.24388889);
+	PointAdd("EYKS"	,54.88		,	23.88166667); 
+	PointAdd("EYMO"	,55.11277778,	25.33638889);
+	PointAdd("EYPA"	,55.97333333,	21.09388889);
+	PointAdd("EYRD"	,54.49555556,	24.7175    );
+	PointAdd("EYSA"	,55.89388889,	23.395     );
+	PointAdd("EYVI"	,54.63611111,	25.29361111);
+	PointAdd("EYAL"	,54.41527778,	24.05555556);
+	PointAdd("EYMM"	,54.66388889,	23.45194444);
+
     PointAdd("Alanta"   ,55.35111111,   25.29527778);
-    PointAdd("Alytus"   ,54.41444444,   24.05833333);
     PointAdd("Anykščiai"   ,55.52416667,   25.10083333);
     PointAdd("Antalieptė"   ,55.66666667,   25.86666667);
     PointAdd("Ariogala"   ,55.26555556,   23.46444444);
@@ -48,16 +60,6 @@ function LoadPoints(){
 	PointAdd("Druskininkai"	,54.01583333,	23.94388889);
 	PointAdd("Dubingiai"	,55.05805556,	25.45333333);
 	PointAdd("Dusetos"	,55.74361111,	25.83583333);
-	PointAdd("EYDR"	,54.01611111,	23.94444444);
-	PointAdd("EYKA"	,54.95972222,	24.06527778);
-	PointAdd("EYKL"	,55.71527778,	21.24388889);
-	PointAdd("EYKS"	,54.88		,	23.88166667); 
-	PointAdd("EYMO"	,55.11277778,	25.33638889);
-	PointAdd("EYPA"	,55.97333333,	21.09388889);
-	PointAdd("EYRD"	,54.49555556,	24.7175    );
-	PointAdd("EYSA"	,55.89388889,	23.395     );
-	PointAdd("EYVI"	,54.63611111,	25.29361111);
-	PointAdd("EYVK"	,54.66833333,	25.51583333);
 	PointAdd("ELEKA"	,54.80055556,	24.68888889);
 	PointAdd("EPINI"	,54.61388889,	25.43166667);
 	PointAdd("Ignalina"	,55.34		,	26.15777778); 
@@ -76,7 +78,6 @@ function LoadPoints(){
 	PointAdd("Molėtai	"	,55.22055556,	25.40944444);
 	PointAdd("N._Akmenė"	,56.31666667,	22.88333333);
 	PointAdd("Nemenčinė"	,54.83333333,	25.41666667);
-	PointAdd("Paluknys"	,54.47611111,	24.99222222);
 	PointAdd("Panevėžys"	,55.70833333,	24.345     );
 	PointAdd("Pasvalys"	,56.06166667,	24.39805556);
 	PointAdd("Pikeliškės"	,54.84166667,	25.25      );
@@ -104,9 +105,7 @@ function LoadPoints(){
 	PointAdd("Zarasai"	,55.73333333,	26.25      );
 	PointAdd("Zavišonys"	,54.43333333,	25.36666667);
 	PointAdd("Želva"	,55.2197165492,	25.09888889);
-	PointAdd("EYAL"	,54.41527778,	24.05555556);
 	PointAdd("Kėdainiai"	,55.28722222,	23.95722222);
-	PointAdd("EYMM"	,54.66388889,	23.45194444);
 	PointAdd("ULKIL"	,54.87638889,	23.99166667);
 	PointAdd("ALISI"	,54.59611111,	25.10527778);
 }
