@@ -21,7 +21,7 @@ var cttrIcon = L.icon({
 
 //Adds saved point with appropriate popup
 function PointAdd(Name, lat, lng, Icon){
-     PointArray[Name] = L.marker([lat, lng], {icon: TriangleIcon})
+     PointArray[Name] = L.marker([lat, lng], Icon)
         .addTo(map)
         .on('click', function(e){
             CreateTempMarker(e,"<p><b>" + Name + "<p/><b/><button onClick=\"onAddpoint()\">Add point</button>");
