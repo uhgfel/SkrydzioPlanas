@@ -121,7 +121,7 @@ function LoadGeneralPoints(Icon){
 	PointAdd("Molėtai	"	,55.22055556,	25.40944444, Icon);
 	PointAdd("N._Akmenė"	,56.31666667,	22.88333333, Icon);
 	PointAdd("Nemenčinė"	,54.83333333,	25.41666667, Icon);
-	PointAdd("Pasvalys"	,56.06166667,	24.39805556);
+	PointAdd("Pasvalys"	,56.06166667,	24.39805556, Icon);
 	PointAdd("Pikeliškės"	,54.84166667,	25.25      , Icon);
 	PointAdd("Prienai"	,54.63527778,	23.95166667, Icon);
 	PointAdd("Ramygala"	,55.51083333,	24.30444444, Icon);
