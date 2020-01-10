@@ -1,0 +1,1363 @@
+  <!--buvo su html tipu etc. Paciam virsuj 2 eilutes-->
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml"> 
+  <!--Must include script-->
+  <script type ="text/javascript" >
+
+    function set_lang(arg1) 
+        {
+           document.getElementById("Language1").value = arg1;
+        }
+    function DoLoadas() {
+                 
+        //Page_ClientValidate("valid_Group_Fpl");
+       
+
+
+        document.getElementById("Txt_acftId").style.backgroundColor = Txt_acftId_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+        document.getElementById("Txt_acftType").style.backgroundColor = Txt_acftType_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+        document.getElementById("Txt_DepAdd").style.backgroundColor = Txt_DepAdd_RegularExpressionValidator.isvalid && Txt_DepAdd_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+        document.getElementById("Txt_ftime").style.backgroundColor = Txt_ftime_Validator.isvalid && Txt_ftime_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+        document.getElementById("Txt_speed").style.backgroundColor = Txt_speed_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+        if (document.getElementById("DDList_level").value != "VFR") {
+            
+            document.getElementById("Txt_level").style.backgroundColor = Txt_level_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+        }
+        document.getElementById("Txt_equipment_a").style.backgroundColor = Txt_equipment_a_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+        document.getElementById("Txt_equipment_b").style.backgroundColor = Txt_equipment_b_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+        document.getElementById("Txt_route").style.backgroundColor = Txt_route_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+        document.getElementById("Txt_DesAdd").style.backgroundColor = Txt_DesAdd_RegularExpressionValidator.isvalid && Txt_DesAdd_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+        document.getElementById("Txt_TotalEET").style.backgroundColor = Txt_TotalEET_RegularExpressionValidator.isvalid && Txt_TotalEET_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+        document.getElementById("Txt_altn1").style.backgroundColor = Txt_altn1_RegularExpressionValidator.isvalid ? "White" : "#FF9999";
+        document.getElementById("Txt_altn2").style.backgroundColor = Txt_altn2_RegularExpressionValidator.isvalid ? "White" : "#FF9999";
+        document.getElementById("Txt_info").style.backgroundColor = Txt_info_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+        document.getElementById("Txt_endurance").style.backgroundColor = Txt_endurance_RegularExpressionValidator.isvalid && Txt_endurance_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+        document.getElementById("Txt_persons").style.backgroundColor = Txt_persons_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+        document.getElementById("Txt_C").style.backgroundColor = Txt_C_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+        document.getElementById("Txt_FiledBy").style.backgroundColor = Txt_FiledBy_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+        document.getElementById("Txt_phone").style.backgroundColor = Txt_phone_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+        document.getElementById("Txt_email").style.backgroundColor = Txt_email_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+
+        var today = new Date();
+        var metai = today.getFullYear().toString();
+        var menuo = today.getMonth() + 1;
+        var diena = today.getDate();
+        if (menuo < 10) {
+            menuo = '0' + menuo;
+        }
+        if (diena < 10) {
+            diena = '0' + diena;
+        }
+        metai = metai.substring(2, 4);
+        document.getElementById("Txt_info").value = "DOF/" + metai + menuo + diena;
+
+        Txt_acftId_val();
+       
+
+          }
+    function speed_list_change() {
+        if (document.getElementById("DDList_speed").value == "M - Mach number") {
+
+        } 
+        else {
+           
+        }
+
+     }   
+     function level_list_change() {
+        if (document.getElementById("DDList_level").value == "A") {
+            $find("Txt_level_MaskedEditExtender").set_Mask("999");
+            $find("Txt_level_MaskedEditExtender")._convertMask();
+        } else {
+            $find("Txt_level_MaskedEditExtender").set_Mask("9999");
+            $find("Txt_level_MaskedEditExtender")._convertMask();
+        }
+
+        if (document.getElementById("DDList_level").value == "VFR") {
+           // var behavior = $find("MaskedEditValidator31");
+           // alert(behavior.ValidEmpty);
+ 
+        }
+     }
+     RootValidate = function (sender, args) {
+         //do your validation logic   
+         alert(!args.IsValid);
+         if (!args.IsValid) {
+             var ctrl = $("#" + sender.controltovalidate);
+             if (ctrl) {
+                 ctrl.css({ "background-color": "#990000", "border": "1px solid #993300" });
+             }
+         }
+         
+         return false;
+     }
+
+
+     validateField = function (sender, args) {
+         //do your validation logic   
+         
+         if (!args.IsValid) {
+             var ctrl = $("#" + sender.controltovalidate);
+             if (ctrl) {
+                 ctrl.css({ "background-color": "#990000", "border": "1px solid #993300" });
+             }
+         }
+         return args.IsValid;
+     }
+     
+     function Txt_ftime_val(sender) {
+         document.getElementById("Txt_ftime").style.backgroundColor = Txt_ftime_Validator.isvalid && Txt_ftime_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+
+     }
+     function Txt_acftId_val(sender) {
+         document.getElementById("Txt_acftId").style.backgroundColor = Txt_acftId_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+     }
+     function Txt_acftType_val(sender) {
+         document.getElementById("Txt_acftType").style.backgroundColor = Txt_acftType_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+     }
+
+     function Txt_equipment_a_val(sender) {
+         document.getElementById("Txt_equipment_a").style.backgroundColor = Txt_equipment_a_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+     }
+     function Txt_equipment_b_val(sender) {
+         document.getElementById("Txt_equipment_b").style.backgroundColor = Txt_equipment_b_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+     }
+
+     function Txt_DepAdd_val(sender) {
+         document.getElementById("Txt_DepAdd").style.backgroundColor = Txt_DepAdd_RegularExpressionValidator.isvalid && Txt_DepAdd_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+     }
+     function Txt_speed_val(sender) {
+         document.getElementById("Txt_speed").style.backgroundColor = Txt_speed_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+     }
+     function Txt_level_val(sender) {
+         document.getElementById("Txt_level").style.backgroundColor = Txt_level_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+     }
+     function Txt_route_val(sender) {
+         document.getElementById("Txt_route").style.backgroundColor = Txt_route_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+     }
+     function Txt_DesAdd_val(sender) {
+         document.getElementById("Txt_DesAdd").style.backgroundColor = Txt_DesAdd_RegularExpressionValidator.isvalid && Txt_DesAdd_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+     }
+     function Txt_TotalEET_val(sender) {
+         document.getElementById("Txt_TotalEET").style.backgroundColor = Txt_TotalEET_RegularExpressionValidator.isvalid && Txt_TotalEET_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+     }
+     function Txt_altn1_val(sender) {
+         document.getElementById("Txt_altn1").style.backgroundColor = Txt_altn1_RegularExpressionValidator.isvalid ? "White" : "#FF9999";
+     }
+     function Txt_altn2_val(sender) {
+         document.getElementById("Txt_altn2").style.backgroundColor = Txt_altn2_RegularExpressionValidator.isvalid ? "White" : "#FF9999";
+     }
+     function Txt_info_val() {
+         document.getElementById("Txt_info").style.backgroundColor = Txt_info_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+     }
+     function Txt_endurance_val(sender) {
+         document.getElementById("Txt_endurance").style.backgroundColor = Txt_endurance_RegularExpressionValidator.isvalid && Txt_endurance_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+     }
+     function Txt_persons_val() {
+         document.getElementById("Txt_persons").style.backgroundColor = Txt_persons_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+     }
+     function Txt_C_val() {
+         document.getElementById("Txt_C").style.backgroundColor = Txt_C_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+     }
+     function Txt_FiledBy_val() {
+         document.getElementById("Txt_FiledBy").style.backgroundColor = Txt_FiledBy_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+     }
+    function Txt_email_val() {
+        document.getElementById("Txt_email").style.backgroundColor = Txt_email_ExpressionValidator.isvalid ? "White" : "#FF9999";
+    }
+    function Txt_phone_val() {
+        document.getElementById("Txt_phone").style.backgroundColor = Txt_phone_RequiredFieldValidator.isvalid ? "White" : "#FF9999";
+    }
+     
+  </script>
+
+<div id="FlightPlanTable">
+    <div id="Panel1">
+  
+      <form method="post" action="./flightplan.aspx" onsubmit="javascript:return WebForm_OnSubmit();" id="form1">
+    <div class="aspNetHidden">
+    <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+    <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+    <input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+    <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJMjQwNTUxNzA3D2QWAgIBD2QWAgIBD2QWBAIJDxBkZBYBZmQCbQ8QZGQWAWZkGAEFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYMBQZDa3J1aGYFBkNrcmVsdAUGQ2tydmhmBQdDaGtfU19QBQdDaGtfU19NBQdDaGtfU19EBQdDaGtfU19KBQdDaGtfSl9MBQdDaGtfSl9VBQdDaGtfSl9GBQdDaGtfSl9WBQdDaGtfRF9DVCvqTgXlEVgEJpzrdMWIJcWCE4ZO37iZdPYp9jAeXgI=" />
+    </div>
+    
+  <script type="text/javascript">
+  //<![CDATA[
+  var theForm = document.forms['form1'];
+    if (!theForm) {
+      theForm = document.form1;
+  }
+    function __doPostBack(eventTarget, eventArgument) {
+      if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+          theForm.__EVENTTARGET.value = eventTarget;
+          theForm.__EVENTARGUMENT.value = eventArgument;
+          theForm.submit();
+      }
+  }
+    //]]>
+  </script>
+  
+    
+  <script src="/onfpl/WebResource.axd?d=tm87QxCT0g1ZzslYkezJ4FqAePokI8Wn1uXDnrSxKeyos2XkgBK-Kn3T8UwfuF2VYfIi4kwq2THuNB3K9RbQy4iL1AWlYUFxPFKVs9asoXw1&amp;t=636934993199995647" type="text/javascript"></script>
+  
+    
+  <script src="/onfpl/ScriptResource.axd?d=D8_Fm4o_Tm81CjsI5u75mlBHH4T_eE_m-oh_7Q1kzFx26OCOHIx0Hc59BFLxpiTzGGUuosj_7tP7QoZ7lmMeHgUPzanibzZoG7tp2H4hXP2WkBV43ni4Tv1Q4jW-zuvvrNdcp3XddCTvyRipyHNi064T18QZXRe_AVSG39IeN_c1&amp;t=4e518d44" type="text/javascript"></script>
+  <script src="/onfpl/ScriptResource.axd?d=8WuTW5TSU79PmISowILDX853YkaM113XyeOCNVvkDClrSy0OfyK54W_2Zyvm45lSc0ez7nYPuRheSsXvIrQ7HRf8GmvCisNEFGjC3tsuLrgUZDppagVdW0MnBF5F0ojw0&amp;t=7f16157c" type="text/javascript"></script>
+  <script src="/onfpl/ScriptResource.axd?d=cdm0LFZYEifKHQ7rbkOpUCRs1JsNqg0IszajVQIj7AuEmDe2g9AQgiua5E6O9s8-ZNNgQQBBotDtP_FUDJTiBJhvoyv7z-YzTpEmcSePPmUSslFBAiYMI8P2-fQtaLAxwmgbUiBtShebuw3ln3r_IA2&amp;t=7f16157c" type="text/javascript"></script>
+  <script src="Scripts/webkit.js" type="text/javascript"></script>
+  <script src="/onfpl/ScriptResource.axd?d=_5AM_5eRwby293Vbs5eR5JJsLd8Bdw1RIKFYCG9VCFQ_EyGb9Nh56VKmEsyzSorA7RyP6T9STMPYTsv1BuZyHt5fyPobCoHJFm6-8ZZEASTOsX10Sp71OXNY4PgDZA7w0&amp;t=7f16157c" type="text/javascript"></script>
+  <script src="/onfpl/ScriptResource.axd?d=RqjSZkSJ8qQF0EX1UXPN9bjvQXZblVCjLgB96LG97utp79aZkv4pFKFz8f3rrX14z00ObzzxXKpwxFRDg23D4m6czj5trKshF6Id75ibyPoGrwGpSx-aIIUE-ao4ORV-3vWWgFbFKJEff-_CC2JrHA2&amp;t=7f16157c" type="text/javascript"></script>
+  <script src="/onfpl/ScriptResource.axd?d=TxwsalDWPuU2e70ss7G5ndskKgcxnsOQNEhQGMsTEx0fEVkG4eXjDH-JtwdCXh2jN8-3oX-ZUxtV-ixA6HIC4U8JdGXnwW3DB_zEcNiI87XZVJ_AOnjbgwXNpYLX9DDwYWik8HS5BGjDD27t0VFj9um7iKxpfQYwCg2vDRqHIqk1&amp;t=7f16157c" type="text/javascript"></script>
+  <script type="text/javascript">
+  //<![CDATA[
+  function WebForm_OnSubmit() {
+  if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+  return true;
+  }
+    //]]>
+  </script>
+  
+    <div class="aspNetHidden">
+  
+      <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="2641ADBE" />
+      <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAEB9s6nMp1LR268BV73Bq8qQ8eAQaIyHfmDzitT+aANzMk79ySXjPjuxzoZ14SLhBqZj/RMtflxFt/WEz9aE2nX8XGLETq4Jbh1DhGgqM4Btbwz6Q+LSIqasbb4BSh4RyGI9UcIRV/fNUAW8YT8FRWkX9Wl1YfzQFjARvI6ZtBaW+FO5paJRRFvq6dj0YqBQLSdgMdSZLqtV6fyB47cG1lfR6ubJUdZM7udgeZMhk/bj2i9LOJwvisV1Zn3q7KsPVVNjgFhNHCS4saDKu4pjMM7jHS2syiZFhCD2hjZGFIRTKibVsUXwqIl/317N/1QB4aC2P9zoas/Cfa++olVxL1R7AkbIFmseSDA7efT3SsIKKQolMMKGYtHmcaU5tLMPhSMJpDcQJqzoX1kUNEU8pUYPPngk02ghFl7j9Xdaw+FvWPxqSTRnV82VYFk+Zwvh/iqotECKYDPvZbxddzQR4OsP/rABOumyykPEdbOoMWpXcTX8kxz1kKf8OkEWon3LWGCjAfV+hpZ4R5MU6rwniGz3eq6jOW3eZ99UEbQ7tfj7PhZRxvqIurbpkqPGie3UM957X0UFMpnyUWf2JSUqN07AUSqH+MgWrMd4AdmDHxZQxLbnalGbJ/wxfgGrXul9wXrA3yPvQ3Khh4ikRK1c3lsMW+wZV1Pjvy/gOL905Fo9mqt421+SB2Jcv8fv4U8xZnYWcZEvwi7Bk32eIvUXki+syouQ4D97s3z+pm6hJkNllHVUsTwG3fJEw81oPpNLHfagJAHXkLkUJRWE4RG2iS2AGDxuLlP52/4KhdxPGcHg/I/9en0KImSXyyFrmcNcUPqxuSAhPwJTASFqDzT1awIQ8rLqzNNARkuhQT3gYr1Rmp/DomXwvSUDYaNjtUD0MggCbB7W/dRp6dkWYDky/0RpoIjSXPNGx0x6qMd3befEFUfDaFbz6GkFA1fYgGmpIBxOFQYtD4IfUU8gopI2hS6lxwrTv9jusJPDS0i+o4buEJN8stAZkmaZdwxEuecOsSRIiPybwlUXLa8vovWUS1ASbhidVD50cNTjkjg5uu0aE+QcGwXhFi23/hR1H6kAIrAr3dJ/a4ZLjTHxo62P4b2fcQCf2bXlbNDIndYKkUjePgESbohj1xPbMxffaHeeBildUh7acDqYK61ZI1ki0RMgoz0AnLR5xmp07AE3lstWmq9ON3K50+eUiI2OYPPw3cFIYoD+JrwLRyQzSTttkJiIDtLJhwbiJjVdxAO1h4Rt3+MMvH+38QuV66Xkb8vBXfTfYLUcJVvWvuGZ3saRjQUDBESvFPbtTdU3DnXbc5AoUOZGmg+3/o5z6tW0pzlv5r9T17O94edpdm0YOOSF1N5WAqS0IIlKKlgufyYWn8Qv3WDdA6AQoMhwjek52T880gg=" />
+    </div>
+      <script type="text/javascript">
+  //<![CDATA[
+  Sys.WebForms.PageRequestManager._initialize('ScriptManager1', 'form1', [], [], [], 90, '');
+    //]]>
+  </script>
+  
+     
+      <center>
+          <div id="successmessage" style="display:none; color:Red; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background-color: rgba(24, 117, 187, 0.74);">
+              <div id="successmessage_text" style="display:block; color:Red; top: 40%;">
+  "Your Flight Plan was successfuly sent. Please wait for your Flight Plan PDF File while we download to you (this may take a few minutes)."
+  </div>
+  </div>
+         
+        <table class="tan-border" id="TABLE3" style="WIDTH: 830px; HEIGHT: 20px" 
+                  border="0" >
+          <tbody id="TBODY3" style="WIDTH: 830px;">
+            <tr id="tr0" style="font-size: small; width:100%" >
+              <td id="td2" align= "left" class="style7" style="font-size: small; width:800px">
+                                  <input name="Language1" id="Language1" type="hidden" />
+                    FPL Message 
+                                  2012 
+                                   
+  &nbsp;
+                                      
+  
+                                  </td>
+              <td id="td1" align= "right" class="style7" style="font-size: small; width:30px">
+                                  <span id="lbl_help" class="label" onclick="window.open(&#39;help.aspx&#39;)" style="">Help</span>
+                                  
+                                  </td>
+                             
+                          
+            </tr>
+            <tr id="tr011">
+              <td id="td21" align="center" class="style1" 
+                              style="border: thin solid #808080; background-color: #FFFFFF;" colspan="2">
+                              <table style="width:99%;" id="main_table">
+                                  <tr>
+                                      <td class="style24">
+                                          </td>
+                                      <td class="style10" style="text-align: left" colspan="2">
+                                          <strong>
+                                          <span id="Lbl_gen">General Information</span>
+                                          </strong></td>
+                                      <td class="style6">
+                                          </td>
+                                  </tr>
+                                  <tr>
+                                      <td class="style8">
+                                          &nbsp;</td>
+                                      <td class="style9" colspan="2">
+                                          <table cellspacing="10" style="border: thin solid #336699; width: 100%;">
+                                              <tr>
+                                                  <td class="style16" style="font-size: 10pt; text-align: right;">
+                                      (7) Aircraft ID:
+  
+                                                  </td>
+                                                  <td align="left" class="style22">
+                                      <input name="Txt_acftId" type="text" maxlength="7" id="Txt_acftId" title="Item 7: Aircraft Identification Maximum 7 characters 
+  
+  Insert one of the following:
+   1.The registration marking of the aircraft (GABCD, N1234GA), either alone or preseeded by the ICAO telephony designator for the operating agency (e.g. SPEEDBIRD GABCD)
+  2.The ICAO designator for the aircraft operating agency, followed by a flight number.
+  3.The call sign determined by the military authorities" class="tan-border_1" OnChange="Txt_acftId_val()" style="width:70%;" />
+  
+                                      
+  
+                                                      <span id="Txt_acftId_RequiredFieldValidator" style="display:none;"></span>
+  
+                                                  </td>
+                                                  <td class="style16" style="text-align: right; font-size: 10pt;" >
+                                                      (8) Flight Rules:
+                                                  </td>
+                                                  <td align="left" class="style68">
+                                      <select name="DDList_frules" id="DDList_frules" title="Item 8: Flight Rules (1 character)
+   
+  Select one of the following letters to denote the category of flight rules with which the pilot intends to comply: 
+  •I if IFR
+  •V if VFR
+  •Y if IFR first 
+  •Z if VFR first " class="tan-border_1" style="color:Black;width:104px;">
+      <option value="I - Instrument">I - Instrument</option>
+      <option value="V - Visual">V - Visual</option>
+      <option value="Z - ">Z - </option>
+      <option value="Y -">Y -</option>
+  
+    </select>
+  
+                                                  </td>
+                                                  <td class="style69">
+                                                      Type of Flight:
+                                                  </td>
+                                                  <td class="style14">
+                                                      <select name="DDList_ftypes" id="DDList_ftypes" title="Type of Flight (1 character) 
+  
+  Select one of the following letters to denote the type of flight:
+   •S if scheduled services
+  •N if non-scheduled Air Transport Operations
+  •G if general aviation
+  •M if military
+  •X if other than any of the defined categories above" class="tan-border_1" style="width:104px;">
+      <option value="S - Scheduled">S - Scheduled</option>
+      <option value="N - Non-scheduled">N - Non-scheduled</option>
+      <option value="G - General">G - General</option>
+      <option value="M - Military">M - Military</option>
+      <option value="X - Other">X - Other</option>
+  
+    </select>
+                                                  </td>
+                                              </tr>
+                                              <tr>
+                                                  <td class="style205">
+                                                      (9) Number:
+                                                  </td>
+                                                  <td class="style202">
+                                      <input name="Txt_acftNum" type="text" maxlength="2" id="Txt_acftNum" title="Item 9: Number of aircraft (1 or 2 characters) 
+  
+  Insert number of aircraft, but only if more than one" class="tan-border_1" name="Txt_acftNum" style="width:70%;" />
+  
+                                      
+  
+                                                  </td>
+                                                  <td class="style60">
+                                                      Type of Aircraft:
+                                                  </td>
+                                                  <td class="style206">
+                                      <input name="Txt_acftType" type="text" maxlength="4" id="Txt_acftType" title="Type of aircraft (2 to 4 characters) 
+  
+  Insert the appropriate designator as specified by ICAO, or, if no designator assigned insert ZZZZ and specify in item 18 the (numbers and) type(s) of aircraft preceeded by TYP/" class="tan-border_1" OnChange="Txt_acftType_val()" name="Txt_acftType" style="width:70%;" />
+  
+                                      
+  
+                                                      <span id="Txt_acftType_RequiredFieldValidator" style="display:none;"></span>
+  
+                                                  </td>
+                                                  <td class="style203">
+                                                      Wake Turbulence Cat:
+                                                  </td>
+                                                  <td class="style204">
+                                                      <select name="DDList_wake" id="DDList_wake" title="Wake Turbulence Category (1 character) 
+  
+  Select one of the following letters to indicate the wake turbulence category of the aircraft: 
+  •H - Heavy, to indicate an aircraft type with a MTOW of 136.000 kg (300.000 lb) or more.
+  •M - Medium, to indicate a MTOW less than 136.000 kg but more than 7.000 kg (15.000 lb).
+  •L - Light, to indicate a MTOW of 7.000 kg or less. 
+  •J - Super, to indicate a MTOW of 560.000 kg or more." class="tan-border_1" style="width:104px;">
+      <option selected="selected" value="H">H - Heavy</option>
+      <option value="M">M - Medium</option>
+      <option value="L">L - Light</option>
+      <option value="J">J - Super</option>
+  
+    </select>
+                                                      </td>
+                                              </tr>
+                                              <tr>
+                                                  <td class="style207">
+                                                      (10) Equipment:
+                                                  </td>
+                                                  <td class="style23" colspan="5">
+                                      <input name="Txt_equipment_a" type="text" maxlength="64" id="Txt_equipment_a" title="Item 10: Equipment.
+   Radio Communication, Navigation and Approach Aid equipment." class="tan-border_1" name="Txt_equipment_a" OnChange="Txt_equipment_a_val()" style="width:60%;" />
+  
+                                                      
+  
+                                                      <span id="Txt_equipment_a_RequiredFieldValidator" style="display:none;"></span>
+  
+                                      &nbsp;&nbsp;
+                                                      <span id="Label1" style="font-size:16pt;font-weight:bold;">/</span>
+  &nbsp;&nbsp;
+                                      <input name="Txt_equipment_b" type="text" maxlength="20" id="Txt_equipment_b" title="Item 10: Equipment.
+   Radio Communication, Navigation and Approach Aid equipment." class="tan-border_1" name="Txt_equipment_a" OnChange="Txt_equipment_b_val()" style="width:30%;" />
+  
+                                                      
+  
+                                                      <span id="Txt_equipment_b_RequiredFieldValidator" style="display:none;"></span>
+  
+                                                  </td>
+                                              </tr>
+                                          </table>
+                                      </td>
+                                      <td>
+                                          &nbsp;</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="style8">
+                                          &nbsp;</td>
+                                      <td class="style10" style="text-align: left" colspan="2">
+                                          <strong>
+                                          <span id="Lbl_routeInf">Route Information</span>
+                                          </strong></td>
+                                      <td>
+                                          &nbsp;</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="style8">
+                                          &nbsp;</td>
+                                      <td class="style9" colspan="2">
+                                          <table cellspacing="10" style="border: thin solid #336699; width:100%;">
+                                              <tr>
+                                                  <td class="style45" style="font-size: 10pt; text-align: right;">
+                                                      (13) Departure:
+  
+                                                  </td>
+                                                  <td align="left" class="style46">
+                                                      <input name="Txt_DepAdd" type="text" maxlength="4" id="Txt_DepAdd" title="Item 13: Departure Aerodrome  (4 characters)
+   
+   Insert the ICAO four letter Location Indicator of the departure aerodrome, or if no  location indicator assigned, insert ZZZZ and specify in item 18, preceeded by DEP/  the name of the aerodrome" class="tan-border_1" OnChange="Txt_DepAdd_val()" style="width:60px;" />
+                                                      
+                                                      <span id="Txt_DepAdd_RequiredFieldValidator" style="display:none;"></span>
+                                                      <span id="Txt_DepAdd_RegularExpressionValidator" style="display:none;"></span>
+                                                      </td>
+                                                  <td class="style34">
+                                                      Time:
+                                                  </td>
+                                                  <td class="style27" colspan="5">
+                                                      <input name="Txt_ftime" type="text" maxlength="4" id="Txt_ftime" title="Time (4 characters) 
+   Insert time HHMM" class="tan-border_1" OnChange="Txt_ftime_val()" style="width:60px;" />
+                                                      
+                                                      <span id="Txt_ftime_Validator" style="display:none;"></span>
+                                                      <span id="Txt_ftime_RequiredFieldValidator" style="display:none;"></span>
+                                                      </td>
+                                              </tr>
+                                              <tr>
+                                                  <td class="style47">
+                                                      (15) Cruising Speed:
+  
+                                                  </td>
+                                                  <td class="style72">
+                                      <select name="DDList_speed" id="DDList_speed" title="Item 15: Cruising Speed (maximum 5 characters) 
+  
+   Insert the first cruising speed as the True Airspeed for the first or whole portion of  the flight, in terms of: 
+  •Kilometres per hour, expressed as K followed by 4 numbers (e.g. K0350)
+  •Knots, expressed as N, followed by 4 numbers (e.g. N0220)
+  •Mach number, when so prescribed by the appropriate ATS authority to the nearest hundredths of unit mach, expressed as M followed by 3 numbers (e.g. M082)" class="tan-border_1" OnChange="speed_list_change()" name="DDList_equipment_b" style="color:Black;width:45px;">
+      <option value="N - Knots">N - Knots</option>
+      <option value="K - Kilometers">K - Kilometers</option>
+      <option value="M - Mach number">M - Mach number</option>
+  
+    </select>
+  
+                                                      <input name="Txt_speed" type="text" maxlength="4" id="Txt_speed" title="Item 15: Cruising Speed (maximum 5 characters) 
+  
+   Insert the first cruising speed as the True Airspeed for the first or whole portion of  the flight, in terms of: 
+  •Kilometres per hour, expressed as K followed by 4 numbers (e.g. K0350)
+  •Knots, expressed as N, followed by 4 numbers (e.g. N0220)
+  •Mach number, when so prescribed by the appropriate ATS authority to the nearest hundredths of unit mach, expressed as M followed by 3 numbers (e.g. M082)" class="tan-border_1" OnChange="Txt_speed_val()" style="width:40px;" />
+                                                      
+                                                      <span id="Txt_speed_RequiredFieldValidator" style="display:none;"></span>
+                                                      </td>
+                                                  <td class="style49">
+                                                      Route:
+                                                  </td>
+                                                  <td colspan="5" rowspan="2" style="text-align: left">
+                                                      <textarea name="Txt_route" rows="3" cols="20" id="Txt_route" title="Route Including changes of speed, level an/or flight rules. (Note that this is an abbreviated instruction) 
+   Flight along designated ATS routes 
+   Insert the designator of the first route, or the letters DCT followed by the point of  joining the route. Then insert each point at which a change of route, speed, level or  flight rules is planned, followed by the designator of the next route segment." class="tan-border_1" OnChange="Txt_route_val()" style="height:49px;width:100%;font-size: 10pt">
+  </textarea>
+                                                      
+                                                      <span id="Txt_route_RequiredFieldValidator" style="display:none;"></span>
+                                                      <span id="CustomValidator2" style="display:none;"></span>
+                                                  </td>
+                                              </tr>
+                                              <tr>
+                                                  <td class="style43">
+                                                      Level:
+  
+                                                  </td>
+                                                  <td class="style67">
+                                      <select name="DDList_level" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;DDList_level\&#39;,\&#39;\&#39;)&#39;, 0)" id="DDList_level" title="Cruising level (maximum 5 characters)
+   
+   Insert the planned cruising level for the first or the whole portion of the route to be  flown, in terms of: 
+  •Flight level expressed as F followed by 3 numbers (e.g. F085, F330)
+  •Altitude in hundreds of feet expressed as A followed by 3 numbers, (e.g. A045, A100)
+  •* Standard Metric level in tens of metres expressed as S followed by 4 numbers (e.g. S1130)
+  •* Altitude in tens of metres expressed as M followed by 4 numbers (e.g. M0840)
+  •or, for VFR flights where the flight is not planned to be flown at a specific cruising level, the letters VFR." class="tan-border_1" style="color:Black;width:45px;">
+      <option selected="selected" value="F">F</option>
+      <option value="S">S</option>
+      <option value="A">A</option>
+      <option value="M">M</option>
+      <option value="VFR">VFR</option>
+  
+    </select>
+  
+                                                      <input name="Txt_level" type="text" maxlength="4" id="Txt_level" title="Cruising level (maximum 5 characters)
+   
+   Insert the planned cruising level for the first or the whole portion of the route to be  flown, in terms of: 
+  •Flight level expressed as F followed by 3 numbers (e.g. F085, F330)
+  •Altitude in hundreds of feet expressed as A followed by 3 numbers, (e.g. A045, A100)
+  •* Standard Metric level in tens of metres expressed as S followed by 4 numbers (e.g. S1130)
+  •* Altitude in tens of metres expressed as M followed by 4 numbers (e.g. M0840)
+  •or, for VFR flights where the flight is not planned to be flown at a specific cruising level, the letters VFR." class="tan-border_1" OnChange="Txt_level_val()" style="width:40px;" />
+                                                      
+                                                      <span id="Txt_level_RequiredFieldValidator" style="display:none;"></span>
+                                                  </td>
+                                                  <td class="style209">
+                                                      </td>
+                                              </tr>
+                                              <tr>
+                                                  <td class="style43">
+                                                      (16) Destination:
+                                                  </td>
+                                                  <td class="style67">
+                                                      <input name="Txt_DesAdd" type="text" maxlength="4" id="Txt_DesAdd" title="Item 16: Destination Aerodrome: (4 characters) 
+  
+   Insert the ICAO four letter location indicator of the destination aerodrome followed  by the total estimated elapsed time, or if no designator has been assigned, insert ZZZZ  followed by the EET and specify in item 18 the name of the aerodrome preceeded by  DEST/." class="tan-border_1" OnChange="Txt_DesAdd_val()" style="width:60px;" />
+                                                      
+                                                      <span id="Txt_DesAdd_RequiredFieldValidator" style="display:none;"></span>
+                                                      <span id="Txt_DesAdd_RegularExpressionValidator" style="display:none;"></span>
+                                                  </td>
+                                                  <td class="style209">
+                                                      Total EET:
+                                                  </td>
+                                                  <td class="style213">
+                                                      <input name="Txt_TotalEET" type="text" maxlength="4" id="Txt_TotalEET" title="EET estimated elapsed time: (4 characters) 
+  Insert the estimated elapsed time HHMM" class="tan-border_1" OnChange="Txt_TotalEET_val()" style="width:60px;" />
+                                                      
+                                                      <span id="Txt_TotalEET_RequiredFieldValidator" style="display:none;"></span>
+                                                      <span id="Txt_TotalEET_RegularExpressionValidator" style="display:none;"></span>
+                                                  </td>
+                                                  <td class="style212">
+                                                      Alternate:
+                                                  </td>
+                                                  <td class="style211">
+                                                      <input name="Txt_altn1" type="text" maxlength="4" id="Txt_altn1" title="Alternate aerodromes 
+  
+   Insert the ICAO four letter location indicator of not more than two aerodromes, or, if  no designator has been assigned, insert ZZZZ and specify in item 18 the name of the  aerodrome preceeded by ALTN/." class="tan-border_1" OnChange="Txt_altn1_val()" style="width:60px;" />
+                                                      
+                                                      <span id="Txt_altn1_RegularExpressionValidator" style="display:none;"></span>
+                                                  </td>
+                                                  <td class="style53">
+                                                      2nd Alternate:
+                                                  </td>
+                                                  <td class="style219">
+                                                      <input name="Txt_altn2" type="text" maxlength="4" id="Txt_altn2" title="Alternate aerodromes 
+  
+   Insert the ICAO four letter location indicator of not more than two aerodromes, or, if  no designator has been assigned, insert ZZZZ and specify in item 18 the name of the  aerodrome preceeded by ALTN/." class="tan-border_1" OnChange="Txt_altn2_val()" style="width:60px;" />
+                                                      
+                                                      <span id="Txt_altn2_RegularExpressionValidator" style="display:none;"></span>
+                                                  </td>
+                                              </tr>
+                                          </table>
+                                      </td>
+                                      <td>
+                                          &nbsp;</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="style24">
+                                          </td>
+                                      <td class="style10" style="text-align: left" colspan="2">
+                                          <strong>
+                                          <span id="Lbl_inf">Other Information</span>
+                                          </strong></td>
+                                      <td class="style6">
+                                          </td>
+                                  </tr>
+                                  <tr>
+                                      <td class="style8">
+                                          &nbsp;</td>
+                                      <td class="style9" colspan="2">
+                                          <table cellspacing="10" style="border: thin solid #336699; width:100%;">
+                                              <tr>
+                                                  <td class="style95" style="font-size: 10pt; text-align: right;">
+                                                      (18) Other Information:
+  
+                                                  </td>
+                                                  <td align="left" class="style31" rowspan="3">
+                                                      <textarea name="Txt_info" rows="5" cols="20" id="Txt_info" title="Item 18: Other information 
+  Insert 0 (zero) if no other information, or, any other necessary information in the  preferred sequence shown below, in the form of an appropriate indicator followed by  an oblique stroke and the information to be recorded.
+  STS/ PBN/ NAV/ COM/ DAT/ SUR/ DEP/ DEST/ DOF/ REG/ EET/ SEL/ TYP/ CODE/ DLE/ OPR/ ORGN/ PER/ ALTN/ RALT/ TALT/ RIF/ RMK/" class="tan-border_1" OnChange="Txt_info_val()" style="height:87px;width:100%;font-size: 10pt">
+  </textarea>
+                                                      
+                                                      </td>
+                                              </tr>
+                                              <tr>
+                                                  <td class="style75">
+                                                      <span id="Txt_info_RequiredFieldValidator" style="display:none;"></span>
+                                                  </td>
+                                              </tr>
+                                              <tr>
+                                                  <td class="style96">
+                                                      </td>
+                                              </tr>
+                                          </table>
+                                      </td>
+                                      <td>
+                                          &nbsp;</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="style24">
+                                          </td>
+                                      <td class="style84" colspan="2">
+                                          <span class="style44">
+                                          <strong style="font-size: small; text-align: left;">
+                                          <span id="Lbl_suppl">(19) Supplementary Information</span>
+                                          </strong></span></td>
+                                      <td class="style85">
+                                          </td>
+                                  </tr>
+                                  <tr>
+                                      <td class="style24">
+                                          &nbsp;</td>
+                                      <td class="style84" colspan="2">
+                                          <table cellspacing="10" style="border: thin solid #336699; width:100%;">
+                                              <tr>
+                                                  <td class="style190" style="font-size: 10pt; text-align: right;">
+                                                      Endurance: E/
+  
+                                                  </td>
+                                                  <td align="left" class="style188">
+                                                      <input name="Txt_endurance" type="text" maxlength="4" id="Txt_endurance" title="Endurance 
+  Insert a 4 number group giving the fuel endurance in hours and minutes." class="tan-border_1" OnChange="Txt_endurance_val()" style="width:60px;" />
+                                                      
+                                                      <span id="Txt_endurance_RequiredFieldValidator" style="display:none;"></span>
+                                                      <span id="Txt_endurance_RegularExpressionValidator" style="display:none;"></span>
+                                                      </td>
+                                                  <td class="style186">
+                                                      Persons on Board: P/
+                                                  </td>
+                                                  <td class="style189">
+                                                      <input name="Txt_persons" type="text" maxlength="3" id="Txt_persons" title="Persons on Board 
+  Insert the total number of persons (passengers and crew) on board, when  required by the appropriate ATS authority. Insert TBN (to be notified) if the total  number of persons is not known when filing." class="tan-border_1" OnChange="Txt_persons_val()" style="width:60px;" />
+                                                      
+  
+                                                      <span id="Txt_persons_RequiredFieldValidator" style="display:none;"></span>
+  
+                                                      <span id="Txt_persons_CustomValidator" style="display:none;"></span>
+  
+                                                      </td>
+                                              </tr>
+                                              </table>
+                                      </td>
+                                      <td class="style85">
+                                          &nbsp;</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="style184">
+                                          </td>
+                                      <td class="style113" valign="baseline" colspan="2">
+                                          <table style="width: 100%; height: 20px;">
+                                              <tr>
+                                                  <td class="style180" >
+                                                      Emergency Radio: R/
+                                                  </td>
+                                                  <td class="style181">
+                                                      Survival Equipment: S/
+                                                  </td>
+                                                  <td class="style182">
+                                                      Jackets: J/
+                                                  </td>
+                                                  <td class="style183">
+                                                      Dinghies: D/
+                                                  </td>
+                                              </tr>
+                                          </table>
+                                          </td>
+                                      <td class="style185">
+                                          </td>
+                                  </tr>
+                                  <tr>
+                                      <td class="style176">
+                                          </td>
+                                      <td class="style177" valign="baseline" colspan="2">
+                                          <table style="width: 100%; height: 93px;">
+                                              <tr>
+                                                  <td class="style175" style="width:150px;" >
+                                          <table cellspacing="10" style="border: thin solid #336699; width:100%; height: 100%;">
+                                              <tr>
+                                                  <td class="style116" style="font-size: 10pt; text-align: left;">
+                                                          <span style="display:inline-block;height:19px;width:50px;"><input id="Ckruhf" type="checkbox" name="Ckruhf" /><label for="Ckruhf">UHF</label></span>
+                                                          </td>
+                                                  <td align="left" class="style127" >
+                                                      <span style="font-size: 10pt"><input id="Ckrelt" type="checkbox" name="Ckrelt" /><label for="Ckrelt">ELT</label></span>
+                                                  </td>
+                                              </tr>
+                                              <tr>
+                                                  <td align="left" class="style127">
+                                                      <span style="font-size: 10pt"><input id="Ckrvhf" type="checkbox" name="Ckrvhf" /><label for="Ckrvhf">VHF</label></span>
+                                                  </td>
+                                              </tr>
+                                              </table>
+                                                  </td>
+                                                  <td class="style174" style="width:190px;">
+                                          <table cellspacing="10" style="border: thin solid #336699; width:100%; height: 100%;">
+                                              <tr>
+                                                  <td class="style124" style="font-size: 10pt; text-align: left;">
+                                                      <span class="style115"><input id="Chk_S_P" type="checkbox" name="Chk_S_P" /><label for="Chk_S_P">Polar</label></span>
+                                                  </td>
+                                                  <td align="left" class="style135" >
+                                                      <span class="style115"><input id="Chk_S_M" type="checkbox" name="Chk_S_M" /><label for="Chk_S_M">Maritime</label></span>
+                                                  </td>
+                                              </tr>
+                                              <tr>
+                                                  <td class="style124" style="font-size: 10pt; text-align: left;">
+                                                      <span class="style115"><input id="Chk_S_D" type="checkbox" name="Chk_S_D" /><label for="Chk_S_D">Desert:</label></span>
+                                                  </td>
+                                                      <td align="left" class="style136" >
+                                                          <span class="style115"><input id="Chk_S_J" type="checkbox" name="Chk_S_J" /><label for="Chk_S_J">Jungle</label></span>
+                                                  </td>
+                                              </tr>
+                                              </table>
+                                                  </td>
+                                                  <td style="width:190px;">
+                                          <table cellspacing="10" style="border: thin solid #336699; width:100%; height: 100%;">
+                                              <tr>
+                                                  <td class="style134" style="font-size: 10pt; text-align: left;">
+                                                      <span class="style115"><input id="Chk_J_L" type="checkbox" name="Chk_J_L" /><label for="Chk_J_L">Light</label></span>
+                                                  </td>
+                                                  <td align="left" class="style164" >
+                                                      <span class="style115"><input id="Chk_J_U" type="checkbox" name="Chk_J_U" /><label for="Chk_J_U">UHF</label></span>
+                                                  </td>
+                                              </tr>
+                                              <tr>
+                                                  <td class="style106">
+                                                      <span class="style115"><input id="Chk_J_F" type="checkbox" name="Chk_J_F" /><label for="Chk_J_F">Flourescent</label></span>
+                                                      </td>
+                                                      <td align="left" class="style163" >
+                                                      <span class="style115"><input id="Chk_J_V" type="checkbox" name="Chk_J_V" /><label for="Chk_J_V">VHF</label></span>
+                                                      </td>
+                                              </tr>
+                                              </table>
+                                                  </td>
+                                                  <td style="width:270px;">
+                                          <table cellspacing="10" style="border: thin solid #336699; width:100%; height: 100%;">
+                                              <tr>
+                                                  <td class="style179" 
+                                                      style="font-size: 10pt; text-align: right; font-weight: 700;">
+                                                      Number:
+  
+                                                  </td>
+                                                  <td class="style152" style="font-size: 10pt; text-align: left;">
+                                                      <input name="Txt_D_N" type="text" maxlength="2" id="Txt_D_N" title="Dinghies/Number
+  Insert number of dinghies carried." class="tan-border_1" style="width:30px;" />
+                                                      
+                                                      </td>
+                                                  <td class="style103" 
+                                                      style="font-size: 10pt; font-weight: 700;">
+                                                      Capacity:
+  
+                                                  </td>
+                                                  <td align="left" class="style160" >
+                                                      <input name="Txt_D_C" type="text" maxlength="3" id="Txt_D_C" title="Insert total capacity, in persons, of all dinghied carried" class="tan-border_1" style="width:100%;" />
+                                                      
+                                                      </td>
+                                              </tr>
+                                              <tr>
+                                                  <td class="style142" colspan="2">
+                                                      <span class="style120"><input id="Chk_D_C" type="checkbox" name="Chk_D_C" /><label for="Chk_D_C">Cover</label></span>
+                                                      </td>
+                                                  <td class="style118">
+                                                      Colour:
+  
+                                                      </td>
+                                                      <td align="left" class="style119" >
+                                                      <input name="Txt_D_CL" type="text" maxlength="10" id="Txt_D_CL" title="Insert colour of dinghies if carried" class="tan-border_1" style="width:100%;" />
+                                                      </td>
+                                              </tr>
+                                              </table>
+                                                  </td>
+                                              </tr>
+                                          </table>
+                                      </td>
+                                      <td class="style178">
+                                          </td>
+                                  </tr>
+  
+                                  <tr>
+                                      <td class="style193">
+                                          </td>
+                                      <td class="style192" colspan="2">
+                                          <span class="style44">
+                                          <strong style="font-size: small; text-align: left;">Additional Requirements
+                                                  </strong></span></td>
+                                      <td class="style194">
+                                          </td>
+                                  </tr>
+  
+                                  <tr>
+                                      <td class="style97">
+                                          </td>
+                                      <td class="style98" colspan="2">
+                                          <table cellspacing="10" style="border: thin solid #336699; width:100%;">
+                                              <tr>
+                                                  <td class="style195" style="font-size: 10pt; text-align: right;">
+                                                      Aircraft Colour and Markings: A/
+                                                  </td>
+                                                  <td align="left" class="style31" >
+                                                      <input name="Txt_A" type="text" maxlength="70" id="Txt_A" title="(AIRCRAFT COLOUR AND MARKINGS) insert colour of aircraft and significant  markings" class="tan-border_1" style="width:100%;font-size: 10pt" />
+                                                      </td>
+                                              </tr>
+                                              <tr>
+                                                  <td class="style198">
+                                                      Remarks: N/
+  
+                                                  </td>
+                                                      <td align="left" class="style31" >
+                                                      <input name="Txt_N" type="text" maxlength="70" id="Txt_N" title="(REMARKS) Indicate any other survival equipment carried and any other remarks  regarding survival equipment." class="tan-border_1" style="width:100%;font-size: 10pt" />
+                                                      </td>
+                                              </tr>
+                                              <tr>
+                                                  <td class="style197">
+                                                      Pilot in Command: C/
+  
+                                                      </td>
+                                                      <td align="left" class="style31" >
+                                                      <input name="Txt_C" type="text" maxlength="33" id="Txt_C" title="(PILOT) insert name of pilot in command" class="tan-border_1" OnChange="Txt_C_val()" style="width:95%;font-size: 10pt" />
+                                                          <span id="Txt_C_RequiredFieldValidator" style="display:none;"></span>
+                                                      </td>
+                                              </tr>
+                                          </table>
+                                      </td>
+                                      <td class="style166">
+                                          </td>
+                                  </tr>
+                                  <tr>
+                                      <td class="style184">
+                                          </td>
+                                      <td class="style200" colspan="2">
+                                          </td>
+                                      <td class="style185">
+                                          </td>
+                                  </tr>
+                                  <tr>
+                                      <td class="style184" rowspan="2">
+                                          &nbsp;</td>
+                                      <td class="style218" style="width:70%" rowspan="2">
+                                          <table cellspacing="10" style="border: thin solid #336699; width:100%;">
+                                              <tr>
+                                                  <td class="auto-style6" style="font-size: 10pt; text-align: right;">
+                                                      Filled By:
+  
+                                                  </td>
+                                                  <td align="left" class="style31" colspan="3" >
+                                                      <input name="Txt_FiledBy" type="text" maxlength="70" id="Txt_FiledBy" title="You should annotate the form with the name of the person filling the plan." class="tan-border_1" OnChange="Txt_FiledBy_val()" style="width:100%;font-size: 10pt" />
+  
+                                                      <span id="Txt_FiledBy_RequiredFieldValidator" style="display:none;"></span>
+                                                      </td>
+                                              </tr>
+                                              <tr>
+                                                  <td class="auto-style7" style="width:15%">
+                                                      
+                                                      Phone num:</td>
+                                                  <td align="left" class="auto-style5" style="width:35%;">
+                                                      <input name="Txt_phone" type="text" maxlength="70" id="Txt_phone" title="Enter valid phone number" class="tan-border_1" OnChange="Txt_phone_val()" style="width:100%;font-size: 10pt" />
+                                                      <span id="Txt_phone_RequiredFieldValidator" style="display:none;"></span>
+                                                      
+                                                  </td>
+                                                  <td class="auto-style8" style="width:15%">
+                                                      
+                                                      E-mail:</td>
+                                                  <td align="left" class="auto-style4" style="width:35%">
+                                                      <input name="Txt_email" type="text" maxlength="70" id="Txt_email" title="Enter valid E-mail" class="tan-border_1_low" OnChange="Txt_email_val()" style="width:100%;font-size: 10pt" />
+                                                      <span id="Txt_email_ExpressionValidator" style="display:none;"></span>
+                                                      <span id="Txt_email_RequiredFieldValidator" style="display:none;"></span>
+                                                  </td>
+                                              </tr>
+                                              </table>
+                                          </td>
+                                      <td class="auto-style1">
+                                          <input type="submit" name="Btn_ok" value="Send and Print" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;Btn_ok&quot;, &quot;&quot;, true, &quot;valid_Group_Fpl&quot;, &quot;&quot;, false, false))" id="Btn_ok" style="width:120px;" />
+                                          <br />
+                                      </td>
+                                      <td class="style185" rowspan="2">
+                                          &nbsp;</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="auto-style1">
+          
+                                          <input type="submit" name="Btn_empty" value="Empty FPL" id="Btn_empty" style="width:120px;" />
+                                              
+                                          </td>
+                                  </tr>
+                                  <tr>
+                                      <td class="style8">
+                                          &nbsp;</td>
+                                      <td class="style9" colspan="2">
+                                          &nbsp;</td>
+                                      <td>
+                                          &nbsp;</td>
+                                  </tr>
+                              </table>
+                              
+                          </td>
+            </tr>
+            <tr id="tr01">
+              <td id="td212" align="center" class="style1" colspan="2">
+                              <div id="ValidationSummary1" style="font-weight:bold;display:none;">
+  
+    </div>
+                          </td>
+            </tr>
+                      <tr id="tr021">
+                                     <td id="td312" align="center" class="style1" colspan="2">
+                                          
+                                          </td>
+                                  </tr>
+                     </tbody>
+        </table>
+        </center>
+          
+          
+  
+      
+  <script type="text/javascript">
+  //<![CDATA[
+  var Page_ValidationSummaries =  new Array(document.getElementById("ValidationSummary1"));
+    var Page_Validators =  new Array(document.getElementById("Txt_acftId_RequiredFieldValidator"), document.getElementById("Txt_acftType_RequiredFieldValidator"), document.getElementById("Txt_equipment_a_RequiredFieldValidator"), document.getElementById("Txt_equipment_b_RequiredFieldValidator"), document.getElementById("Txt_DepAdd_RequiredFieldValidator"), document.getElementById("Txt_DepAdd_RegularExpressionValidator"), document.getElementById("Txt_ftime_Validator"), document.getElementById("Txt_ftime_RequiredFieldValidator"), document.getElementById("Txt_speed_RequiredFieldValidator"), document.getElementById("Txt_route_RequiredFieldValidator"), document.getElementById("CustomValidator2"), document.getElementById("Txt_level_RequiredFieldValidator"), document.getElementById("Txt_DesAdd_RequiredFieldValidator"), document.getElementById("Txt_DesAdd_RegularExpressionValidator"), document.getElementById("Txt_TotalEET_RequiredFieldValidator"), document.getElementById("Txt_TotalEET_RegularExpressionValidator"), document.getElementById("Txt_altn1_RegularExpressionValidator"), document.getElementById("Txt_altn2_RegularExpressionValidator"), document.getElementById("Txt_info_RequiredFieldValidator"), document.getElementById("Txt_endurance_RequiredFieldValidator"), document.getElementById("Txt_endurance_RegularExpressionValidator"), document.getElementById("Txt_persons_RequiredFieldValidator"), document.getElementById("Txt_persons_CustomValidator"), document.getElementById("Txt_C_RequiredFieldValidator"), document.getElementById("Txt_FiledBy_RequiredFieldValidator"), document.getElementById("Txt_phone_RequiredFieldValidator"), document.getElementById("Txt_email_ExpressionValidator"), document.getElementById("Txt_email_RequiredFieldValidator"));
+    //]]>
+  </script>
+  
+  <script type="text/javascript">
+  //<![CDATA[
+  var Txt_acftId_RequiredFieldValidator = document.all ? document.all["Txt_acftId_RequiredFieldValidator"] : document.getElementById("Txt_acftId_RequiredFieldValidator");
+    Txt_acftId_RequiredFieldValidator.controltovalidate = "Txt_acftId";
+    Txt_acftId_RequiredFieldValidator.errormessage = "Field [(7) Aircraft ID] is required.";
+    Txt_acftId_RequiredFieldValidator.display = "None";
+    Txt_acftId_RequiredFieldValidator.isvalid = "False";
+    Txt_acftId_RequiredFieldValidator.validationGroup = "valid_Group_Fpl";
+    Txt_acftId_RequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    Txt_acftId_RequiredFieldValidator.initialvalue = "";
+    var Txt_acftType_RequiredFieldValidator = document.all ? document.all["Txt_acftType_RequiredFieldValidator"] : document.getElementById("Txt_acftType_RequiredFieldValidator");
+    Txt_acftType_RequiredFieldValidator.controltovalidate = "Txt_acftType";
+    Txt_acftType_RequiredFieldValidator.errormessage = "Field [Type of Aircraft] is required.";
+    Txt_acftType_RequiredFieldValidator.display = "None";
+    Txt_acftType_RequiredFieldValidator.isvalid = "False";
+    Txt_acftType_RequiredFieldValidator.validationGroup = "valid_Group_Fpl";
+    Txt_acftType_RequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    Txt_acftType_RequiredFieldValidator.initialvalue = "";
+    var Txt_equipment_a_RequiredFieldValidator = document.all ? document.all["Txt_equipment_a_RequiredFieldValidator"] : document.getElementById("Txt_equipment_a_RequiredFieldValidator");
+    Txt_equipment_a_RequiredFieldValidator.controltovalidate = "Txt_equipment_a";
+    Txt_equipment_a_RequiredFieldValidator.errormessage = "Field (10a ) [Equipment] is required.";
+    Txt_equipment_a_RequiredFieldValidator.display = "None";
+    Txt_equipment_a_RequiredFieldValidator.isvalid = "False";
+    Txt_equipment_a_RequiredFieldValidator.validationGroup = "valid_Group_Fpl";
+    Txt_equipment_a_RequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    Txt_equipment_a_RequiredFieldValidator.initialvalue = "";
+    var Txt_equipment_b_RequiredFieldValidator = document.all ? document.all["Txt_equipment_b_RequiredFieldValidator"] : document.getElementById("Txt_equipment_b_RequiredFieldValidator");
+    Txt_equipment_b_RequiredFieldValidator.controltovalidate = "Txt_equipment_b";
+    Txt_equipment_b_RequiredFieldValidator.errormessage = "Field (10b ) [Equipment] is required.";
+    Txt_equipment_b_RequiredFieldValidator.display = "None";
+    Txt_equipment_b_RequiredFieldValidator.isvalid = "False";
+    Txt_equipment_b_RequiredFieldValidator.validationGroup = "valid_Group_Fpl";
+    Txt_equipment_b_RequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    Txt_equipment_b_RequiredFieldValidator.initialvalue = "";
+    var Txt_DepAdd_RequiredFieldValidator = document.all ? document.all["Txt_DepAdd_RequiredFieldValidator"] : document.getElementById("Txt_DepAdd_RequiredFieldValidator");
+    Txt_DepAdd_RequiredFieldValidator.controltovalidate = "Txt_DepAdd";
+    Txt_DepAdd_RequiredFieldValidator.errormessage = "Field (13 ) [Departure] is required.";
+    Txt_DepAdd_RequiredFieldValidator.display = "None";
+    Txt_DepAdd_RequiredFieldValidator.isvalid = "False";
+    Txt_DepAdd_RequiredFieldValidator.validationGroup = "valid_Group_Fpl";
+    Txt_DepAdd_RequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    Txt_DepAdd_RequiredFieldValidator.initialvalue = "";
+    var Txt_DepAdd_RegularExpressionValidator = document.all ? document.all["Txt_DepAdd_RegularExpressionValidator"] : document.getElementById("Txt_DepAdd_RegularExpressionValidator");
+    Txt_DepAdd_RegularExpressionValidator.controltovalidate = "Txt_DepAdd";
+    Txt_DepAdd_RegularExpressionValidator.errormessage = "Field (13 ) [Departure] is incorrect.";
+    Txt_DepAdd_RegularExpressionValidator.display = "None";
+    Txt_DepAdd_RegularExpressionValidator.validationGroup = "valid_Group_Fpl";
+    Txt_DepAdd_RegularExpressionValidator.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+    Txt_DepAdd_RegularExpressionValidator.validationexpression = "[a-zA-Z]{4,4}";
+    var Txt_ftime_Validator = document.all ? document.all["Txt_ftime_Validator"] : document.getElementById("Txt_ftime_Validator");
+    Txt_ftime_Validator.controltovalidate = "Txt_ftime";
+    Txt_ftime_Validator.errormessage = "Field (13 ) [Time] is incorrect.";
+    Txt_ftime_Validator.display = "None";
+    Txt_ftime_Validator.validationGroup = "valid_Group_Fpl";
+    Txt_ftime_Validator.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+    Txt_ftime_Validator.validationexpression = "^(20|21|22|23|[01]\\d)[0-5]\\d$";
+    var Txt_ftime_RequiredFieldValidator = document.all ? document.all["Txt_ftime_RequiredFieldValidator"] : document.getElementById("Txt_ftime_RequiredFieldValidator");
+    Txt_ftime_RequiredFieldValidator.controltovalidate = "Txt_ftime";
+    Txt_ftime_RequiredFieldValidator.errormessage = "Field (13 ) [Time] is required.";
+    Txt_ftime_RequiredFieldValidator.display = "None";
+    Txt_ftime_RequiredFieldValidator.isvalid = "False";
+    Txt_ftime_RequiredFieldValidator.validationGroup = "valid_Group_Fpl";
+    Txt_ftime_RequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    Txt_ftime_RequiredFieldValidator.initialvalue = "";
+    var Txt_speed_RequiredFieldValidator = document.all ? document.all["Txt_speed_RequiredFieldValidator"] : document.getElementById("Txt_speed_RequiredFieldValidator");
+    Txt_speed_RequiredFieldValidator.controltovalidate = "Txt_speed";
+    Txt_speed_RequiredFieldValidator.errormessage = "Field (15) [Cruising Speed] is required.";
+    Txt_speed_RequiredFieldValidator.display = "None";
+    Txt_speed_RequiredFieldValidator.isvalid = "False";
+    Txt_speed_RequiredFieldValidator.validationGroup = "valid_Group_Fpl";
+    Txt_speed_RequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    Txt_speed_RequiredFieldValidator.initialvalue = "";
+    var Txt_route_RequiredFieldValidator = document.all ? document.all["Txt_route_RequiredFieldValidator"] : document.getElementById("Txt_route_RequiredFieldValidator");
+    Txt_route_RequiredFieldValidator.controltovalidate = "Txt_route";
+    Txt_route_RequiredFieldValidator.errormessage = "Field [Route] is required.";
+    Txt_route_RequiredFieldValidator.display = "None";
+    Txt_route_RequiredFieldValidator.isvalid = "False";
+    Txt_route_RequiredFieldValidator.validationGroup = "valid_Group_Fpl";
+    Txt_route_RequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    Txt_route_RequiredFieldValidator.initialvalue = "";
+    var CustomValidator2 = document.all ? document.all["CustomValidator2"] : document.getElementById("CustomValidator2");
+    CustomValidator2.controltovalidate = "Txt_route";
+    CustomValidator2.errormessage = "Field [Route] is incorrect.";
+    CustomValidator2.display = "None";
+    CustomValidator2.validationGroup = "valid_Group_Fpl";
+    CustomValidator2.evaluationfunction = "CustomValidatorEvaluateIsValid";
+    var Txt_level_RequiredFieldValidator = document.all ? document.all["Txt_level_RequiredFieldValidator"] : document.getElementById("Txt_level_RequiredFieldValidator");
+    Txt_level_RequiredFieldValidator.controltovalidate = "Txt_level";
+    Txt_level_RequiredFieldValidator.errormessage = "Field [Level] is required.";
+    Txt_level_RequiredFieldValidator.display = "None";
+    Txt_level_RequiredFieldValidator.isvalid = "False";
+    Txt_level_RequiredFieldValidator.validationGroup = "valid_Group_Fpl";
+    Txt_level_RequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    Txt_level_RequiredFieldValidator.initialvalue = "";
+    var Txt_DesAdd_RequiredFieldValidator = document.all ? document.all["Txt_DesAdd_RequiredFieldValidator"] : document.getElementById("Txt_DesAdd_RequiredFieldValidator");
+    Txt_DesAdd_RequiredFieldValidator.controltovalidate = "Txt_DesAdd";
+    Txt_DesAdd_RequiredFieldValidator.errormessage = "Field (16 ) [Destination] is required.";
+    Txt_DesAdd_RequiredFieldValidator.display = "None";
+    Txt_DesAdd_RequiredFieldValidator.isvalid = "False";
+    Txt_DesAdd_RequiredFieldValidator.validationGroup = "valid_Group_Fpl";
+    Txt_DesAdd_RequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    Txt_DesAdd_RequiredFieldValidator.initialvalue = "";
+    var Txt_DesAdd_RegularExpressionValidator = document.all ? document.all["Txt_DesAdd_RegularExpressionValidator"] : document.getElementById("Txt_DesAdd_RegularExpressionValidator");
+    Txt_DesAdd_RegularExpressionValidator.controltovalidate = "Txt_DesAdd";
+    Txt_DesAdd_RegularExpressionValidator.errormessage = "Field (16 ) [Destination] is incorrect.";
+    Txt_DesAdd_RegularExpressionValidator.display = "None";
+    Txt_DesAdd_RegularExpressionValidator.validationGroup = "valid_Group_Fpl";
+    Txt_DesAdd_RegularExpressionValidator.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+    Txt_DesAdd_RegularExpressionValidator.validationexpression = "[a-zA-Z]{4,4}";
+    var Txt_TotalEET_RequiredFieldValidator = document.all ? document.all["Txt_TotalEET_RequiredFieldValidator"] : document.getElementById("Txt_TotalEET_RequiredFieldValidator");
+    Txt_TotalEET_RequiredFieldValidator.controltovalidate = "Txt_TotalEET";
+    Txt_TotalEET_RequiredFieldValidator.errormessage = "Field [Total EET] is required.";
+    Txt_TotalEET_RequiredFieldValidator.display = "None";
+    Txt_TotalEET_RequiredFieldValidator.isvalid = "False";
+    Txt_TotalEET_RequiredFieldValidator.validationGroup = "valid_Group_Fpl";
+    Txt_TotalEET_RequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    Txt_TotalEET_RequiredFieldValidator.initialvalue = "";
+    var Txt_TotalEET_RegularExpressionValidator = document.all ? document.all["Txt_TotalEET_RegularExpressionValidator"] : document.getElementById("Txt_TotalEET_RegularExpressionValidator");
+    Txt_TotalEET_RegularExpressionValidator.controltovalidate = "Txt_TotalEET";
+    Txt_TotalEET_RegularExpressionValidator.errormessage = "Field [Total EET] is incorrect.";
+    Txt_TotalEET_RegularExpressionValidator.display = "None";
+    Txt_TotalEET_RegularExpressionValidator.validationGroup = "valid_Group_Fpl";
+    Txt_TotalEET_RegularExpressionValidator.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+    Txt_TotalEET_RegularExpressionValidator.validationexpression = "^(20|21|22|23|[01]\\d)[0-5]\\d$";
+    var Txt_altn1_RegularExpressionValidator = document.all ? document.all["Txt_altn1_RegularExpressionValidator"] : document.getElementById("Txt_altn1_RegularExpressionValidator");
+    Txt_altn1_RegularExpressionValidator.controltovalidate = "Txt_altn1";
+    Txt_altn1_RegularExpressionValidator.errormessage = "Field [Alternate] is incorrect.";
+    Txt_altn1_RegularExpressionValidator.display = "None";
+    Txt_altn1_RegularExpressionValidator.validationGroup = "valid_Group_Fpl";
+    Txt_altn1_RegularExpressionValidator.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+    Txt_altn1_RegularExpressionValidator.validationexpression = "[a-zA-Z]{4,4}";
+    var Txt_altn2_RegularExpressionValidator = document.all ? document.all["Txt_altn2_RegularExpressionValidator"] : document.getElementById("Txt_altn2_RegularExpressionValidator");
+    Txt_altn2_RegularExpressionValidator.controltovalidate = "Txt_altn2";
+    Txt_altn2_RegularExpressionValidator.errormessage = "Field [2nd Alternate] is incorrect.";
+    Txt_altn2_RegularExpressionValidator.display = "None";
+    Txt_altn2_RegularExpressionValidator.validationGroup = "valid_Group_Fpl";
+    Txt_altn2_RegularExpressionValidator.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+    Txt_altn2_RegularExpressionValidator.validationexpression = "[a-zA-Z]{4,4}";
+    var Txt_info_RequiredFieldValidator = document.all ? document.all["Txt_info_RequiredFieldValidator"] : document.getElementById("Txt_info_RequiredFieldValidator");
+    Txt_info_RequiredFieldValidator.controltovalidate = "Txt_info";
+    Txt_info_RequiredFieldValidator.errormessage = "Field (18) [Other Information] is required.";
+    Txt_info_RequiredFieldValidator.display = "None";
+    Txt_info_RequiredFieldValidator.isvalid = "False";
+    Txt_info_RequiredFieldValidator.validationGroup = "valid_Group_Fpl";
+    Txt_info_RequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    Txt_info_RequiredFieldValidator.initialvalue = "";
+    var Txt_endurance_RequiredFieldValidator = document.all ? document.all["Txt_endurance_RequiredFieldValidator"] : document.getElementById("Txt_endurance_RequiredFieldValidator");
+    Txt_endurance_RequiredFieldValidator.controltovalidate = "Txt_endurance";
+    Txt_endurance_RequiredFieldValidator.errormessage = "Field [Endurance] is required.";
+    Txt_endurance_RequiredFieldValidator.display = "None";
+    Txt_endurance_RequiredFieldValidator.isvalid = "False";
+    Txt_endurance_RequiredFieldValidator.validationGroup = "valid_Group_Fpl";
+    Txt_endurance_RequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    Txt_endurance_RequiredFieldValidator.initialvalue = "";
+    var Txt_endurance_RegularExpressionValidator = document.all ? document.all["Txt_endurance_RegularExpressionValidator"] : document.getElementById("Txt_endurance_RegularExpressionValidator");
+    Txt_endurance_RegularExpressionValidator.controltovalidate = "Txt_endurance";
+    Txt_endurance_RegularExpressionValidator.errormessage = "Field [Endurance] is incorrect.";
+    Txt_endurance_RegularExpressionValidator.display = "None";
+    Txt_endurance_RegularExpressionValidator.validationGroup = "valid_Group_Fpl";
+    Txt_endurance_RegularExpressionValidator.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+    Txt_endurance_RegularExpressionValidator.validationexpression = "^(20|21|22|23|[01]\\d)[0-5]\\d$";
+    var Txt_persons_RequiredFieldValidator = document.all ? document.all["Txt_persons_RequiredFieldValidator"] : document.getElementById("Txt_persons_RequiredFieldValidator");
+    Txt_persons_RequiredFieldValidator.controltovalidate = "Txt_persons";
+    Txt_persons_RequiredFieldValidator.errormessage = "Field [Persons on Board] is required.";
+    Txt_persons_RequiredFieldValidator.display = "None";
+    Txt_persons_RequiredFieldValidator.isvalid = "False";
+    Txt_persons_RequiredFieldValidator.validationGroup = "valid_Group_Fpl";
+    Txt_persons_RequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    Txt_persons_RequiredFieldValidator.initialvalue = "";
+    var Txt_persons_CustomValidator = document.all ? document.all["Txt_persons_CustomValidator"] : document.getElementById("Txt_persons_CustomValidator");
+    Txt_persons_CustomValidator.controltovalidate = "Txt_persons";
+    Txt_persons_CustomValidator.errormessage = "Field [Persons on Board] is incorect.";
+    Txt_persons_CustomValidator.display = "None";
+    Txt_persons_CustomValidator.validationGroup = "valid_Group_Fpl";
+    Txt_persons_CustomValidator.evaluationfunction = "CustomValidatorEvaluateIsValid";
+    Txt_persons_CustomValidator.clientvalidationfunction = "validateField";
+    Txt_persons_CustomValidator.validateemptytext = "true";
+    var Txt_C_RequiredFieldValidator = document.all ? document.all["Txt_C_RequiredFieldValidator"] : document.getElementById("Txt_C_RequiredFieldValidator");
+    Txt_C_RequiredFieldValidator.controltovalidate = "Txt_C";
+    Txt_C_RequiredFieldValidator.errormessage = "Field [Pilot in Command] is required.";
+    Txt_C_RequiredFieldValidator.display = "None";
+    Txt_C_RequiredFieldValidator.isvalid = "False";
+    Txt_C_RequiredFieldValidator.validationGroup = "valid_Group_Fpl";
+    Txt_C_RequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    Txt_C_RequiredFieldValidator.initialvalue = "";
+    var Txt_FiledBy_RequiredFieldValidator = document.all ? document.all["Txt_FiledBy_RequiredFieldValidator"] : document.getElementById("Txt_FiledBy_RequiredFieldValidator");
+    Txt_FiledBy_RequiredFieldValidator.controltovalidate = "Txt_FiledBy";
+    Txt_FiledBy_RequiredFieldValidator.errormessage = "Field [Filled By] is required.";
+    Txt_FiledBy_RequiredFieldValidator.display = "None";
+    Txt_FiledBy_RequiredFieldValidator.isvalid = "False";
+    Txt_FiledBy_RequiredFieldValidator.validationGroup = "valid_Group_Fpl";
+    Txt_FiledBy_RequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    Txt_FiledBy_RequiredFieldValidator.initialvalue = "";
+    var Txt_phone_RequiredFieldValidator = document.all ? document.all["Txt_phone_RequiredFieldValidator"] : document.getElementById("Txt_phone_RequiredFieldValidator");
+    Txt_phone_RequiredFieldValidator.controltovalidate = "Txt_phone";
+    Txt_phone_RequiredFieldValidator.errormessage = "Field [Phone] is required.";
+    Txt_phone_RequiredFieldValidator.display = "None";
+    Txt_phone_RequiredFieldValidator.isvalid = "False";
+    Txt_phone_RequiredFieldValidator.validationGroup = "valid_Group_Fpl";
+    Txt_phone_RequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    Txt_phone_RequiredFieldValidator.initialvalue = "";
+    var Txt_email_ExpressionValidator = document.all ? document.all["Txt_email_ExpressionValidator"] : document.getElementById("Txt_email_ExpressionValidator");
+    Txt_email_ExpressionValidator.controltovalidate = "Txt_email";
+    Txt_email_ExpressionValidator.errormessage = "Field [E-mail] is incorrect.";
+    Txt_email_ExpressionValidator.display = "None";
+    Txt_email_ExpressionValidator.validationGroup = "valid_Group_Fpl";
+    Txt_email_ExpressionValidator.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+    Txt_email_ExpressionValidator.validationexpression = "\\w+([-+.\']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+    var Txt_email_RequiredFieldValidator = document.all ? document.all["Txt_email_RequiredFieldValidator"] : document.getElementById("Txt_email_RequiredFieldValidator");
+    Txt_email_RequiredFieldValidator.controltovalidate = "Txt_email";
+    Txt_email_RequiredFieldValidator.errormessage = "Field [E-mail] is required.";
+    Txt_email_RequiredFieldValidator.display = "None";
+    Txt_email_RequiredFieldValidator.isvalid = "False";
+    Txt_email_RequiredFieldValidator.validationGroup = "valid_Group_Fpl";
+    Txt_email_RequiredFieldValidator.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    Txt_email_RequiredFieldValidator.initialvalue = "";
+    var ValidationSummary1 = document.all ? document.all["ValidationSummary1"] : document.getElementById("ValidationSummary1");
+    ValidationSummary1.headertext = "FLIGHT PLAN WAS NOT SENT";
+    ValidationSummary1.showmessagebox = "True";
+    ValidationSummary1.showsummary = "False";
+    ValidationSummary1.displaymode = "List";
+    ValidationSummary1.validationGroup = "valid_Group_Fpl";
+    //]]>
+  </script>
+  
+    
+  <script type="text/javascript">
+  //<![CDATA[
+  
+  var Page_ValidationActive = false;
+  if (typeof(ValidatorOnLoad) == "function") {
+      ValidatorOnLoad();
+  }
+  
+  function ValidatorOnSubmit() {
+      if (Page_ValidationActive) {
+          return ValidatorCommonOnSubmit();
+      }
+      else {
+          return true;
+      }
+  }
+          
+  (function(id) {
+      var e = document.getElementById(id);
+      if (e) {
+          e.dispose = function() {
+              Array.remove(Page_ValidationSummaries, document.getElementById(id));
+          }
+          e = null;
+      }
+  })('ValidationSummary1');
+  Sys.Application.add_init(function() {
+      $create(Sys.Extended.UI.FilteredTextBoxBehavior, {"FilterType":14,"id":"Txt_acftId_FilteredTextBoxExtender"}, null, null, $get("Txt_acftId"));
+  });
+  
+  document.getElementById('Txt_acftId_RequiredFieldValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_acftId_RequiredFieldValidator'));
+  }
+  Sys.Application.add_init(function() {
+      $create(Sys.Extended.UI.FilteredTextBoxBehavior, {"FilterType":2,"id":"Txt_acftNum_FilteredTextBoxExtender"}, null, null, $get("Txt_acftNum"));
+  });
+  Sys.Application.add_init(function() {
+      $create(Sys.Extended.UI.FilteredTextBoxBehavior, {"FilterType":14,"id":"Txt_acftType_FilteredTextBoxExtender"}, null, null, $get("Txt_acftType"));
+  });
+  
+  document.getElementById('Txt_acftType_RequiredFieldValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_acftType_RequiredFieldValidator'));
+  }
+  Sys.Application.add_init(function() {
+      $create(Sys.Extended.UI.FilteredTextBoxBehavior, {"ValidChars":"NnSsAaBbCcDdEeFfGgHhIiJjKkLlMmOoPpRrTtUuVvWwXxYyZz123456789","id":"Txt_equipment_a_FilteredTextBoxExtender"}, null, null, $get("Txt_equipment_a"));
+  });
+  
+  document.getElementById('Txt_equipment_a_RequiredFieldValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_equipment_a_RequiredFieldValidator'));
+  }
+  Sys.Application.add_init(function() {
+      $create(Sys.Extended.UI.FilteredTextBoxBehavior, {"ValidChars":"AaCcEeHhIiLlPpSsXxBbUuVvDdGg12Nn","id":"Txt_equipment_b_FilteredTextBoxExtender"}, null, null, $get("Txt_equipment_b"));
+  });
+  
+  document.getElementById('Txt_equipment_b_RequiredFieldValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_equipment_b_RequiredFieldValidator'));
+  }
+  Sys.Application.add_init(function() {
+      $create(Sys.Extended.UI.FilteredTextBoxBehavior, {"FilterType":12,"id":"Txt_DepAdd_FilteredTextBoxExtender"}, null, null, $get("Txt_DepAdd"));
+  });
+  
+  document.getElementById('Txt_DepAdd_RequiredFieldValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_DepAdd_RequiredFieldValidator'));
+  }
+  
+  document.getElementById('Txt_DepAdd_RegularExpressionValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_DepAdd_RegularExpressionValidator'));
+  }
+  Sys.Application.add_init(function() {
+      $create(Sys.Extended.UI.FilteredTextBoxBehavior, {"FilterType":2,"id":"Txt_ftime_FilteredTextBoxExtender"}, null, null, $get("Txt_ftime"));
+  });
+  
+  document.getElementById('Txt_ftime_Validator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_ftime_Validator'));
+  }
+  
+  document.getElementById('Txt_ftime_RequiredFieldValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_ftime_RequiredFieldValidator'));
+  }
+  Sys.Application.add_init(function() {
+      $create(Sys.Extended.UI.FilteredTextBoxBehavior, {"FilterType":2,"id":"Txt_speed_FilteredTextBoxExtender"}, null, null, $get("Txt_speed"));
+  });
+  
+  document.getElementById('Txt_speed_RequiredFieldValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_speed_RequiredFieldValidator'));
+  }
+  Sys.Application.add_init(function() {
+      $create(Sys.Extended.UI.FilteredTextBoxBehavior, {"FilterType":15,"ValidChars":" /","id":"Txt_route_FilteredTextBoxExtender"}, null, null, $get("Txt_route"));
+  });
+  
+  document.getElementById('Txt_route_RequiredFieldValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_route_RequiredFieldValidator'));
+  }
+  
+  document.getElementById('CustomValidator2').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('CustomValidator2'));
+  }
+  Sys.Application.add_init(function() {
+      $create(Sys.Extended.UI.FilteredTextBoxBehavior, {"FilterType":2,"id":"Txt_level_FilteredTextBoxExtender"}, null, null, $get("Txt_level"));
+  });
+  
+  document.getElementById('Txt_level_RequiredFieldValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_level_RequiredFieldValidator'));
+  }
+  Sys.Application.add_init(function() {
+      $create(Sys.Extended.UI.FilteredTextBoxBehavior, {"FilterType":12,"id":"Txt_DesAdd_FilteredTextBoxExtender"}, null, null, $get("Txt_DesAdd"));
+  });
+  
+  document.getElementById('Txt_DesAdd_RequiredFieldValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_DesAdd_RequiredFieldValidator'));
+  }
+  
+  document.getElementById('Txt_DesAdd_RegularExpressionValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_DesAdd_RegularExpressionValidator'));
+  }
+  Sys.Application.add_init(function() {
+      $create(Sys.Extended.UI.FilteredTextBoxBehavior, {"FilterType":2,"id":"Txt_TotalEET_FilteredTextBoxExtender"}, null, null, $get("Txt_TotalEET"));
+  });
+  
+  document.getElementById('Txt_TotalEET_RequiredFieldValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_TotalEET_RequiredFieldValidator'));
+  }
+  
+  document.getElementById('Txt_TotalEET_RegularExpressionValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_TotalEET_RegularExpressionValidator'));
+  }
+  Sys.Application.add_init(function() {
+      $create(Sys.Extended.UI.FilteredTextBoxBehavior, {"FilterType":12,"id":"Txt_altn1_FilteredTextBoxExtender"}, null, null, $get("Txt_altn1"));
+  });
+  
+  document.getElementById('Txt_altn1_RegularExpressionValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_altn1_RegularExpressionValidator'));
+  }
+  Sys.Application.add_init(function() {
+      $create(Sys.Extended.UI.FilteredTextBoxBehavior, {"FilterType":12,"id":"Txt_altn2_FilteredTextBoxExtender"}, null, null, $get("Txt_altn2"));
+  });
+  
+  document.getElementById('Txt_altn2_RegularExpressionValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_altn2_RegularExpressionValidator'));
+  }
+  Sys.Application.add_init(function() {
+      $create(Sys.Extended.UI.FilteredTextBoxBehavior, {"FilterType":15,"ValidChars":" /","id":"Txt_info_FilteredTextBoxExtender"}, null, null, $get("Txt_info"));
+  });
+  
+  document.getElementById('Txt_info_RequiredFieldValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_info_RequiredFieldValidator'));
+  }
+  Sys.Application.add_init(function() {
+      $create(Sys.Extended.UI.FilteredTextBoxBehavior, {"FilterType":2,"id":"Txt_endurance_FilteredTextBoxExtender"}, null, null, $get("Txt_endurance"));
+  });
+  
+  document.getElementById('Txt_endurance_RequiredFieldValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_endurance_RequiredFieldValidator'));
+  }
+  
+  document.getElementById('Txt_endurance_RegularExpressionValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_endurance_RegularExpressionValidator'));
+  }
+  Sys.Application.add_init(function() {
+      $create(Sys.Extended.UI.FilteredTextBoxBehavior, {"ValidChars":"1234567890TBNtbn","id":"Txt_persons_FilteredTextBoxExtender"}, null, null, $get("Txt_persons"));
+  });
+  
+  document.getElementById('Txt_persons_RequiredFieldValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_persons_RequiredFieldValidator'));
+  }
+  
+  document.getElementById('Txt_persons_CustomValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_persons_CustomValidator'));
+  }
+  Sys.Application.add_init(function() {
+      $create(Sys.Extended.UI.FilteredTextBoxBehavior, {"FilterType":2,"id":"Txt_D_N_FilteredTextBoxExtender"}, null, null, $get("Txt_D_N"));
+  });
+  Sys.Application.add_init(function() {
+      $create(Sys.Extended.UI.FilteredTextBoxBehavior, {"FilterType":2,"id":"Txt_D_C_FilteredTextBoxExtender"}, null, null, $get("Txt_D_C"));
+  });
+  
+  document.getElementById('Txt_C_RequiredFieldValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_C_RequiredFieldValidator'));
+  }
+  
+  document.getElementById('Txt_FiledBy_RequiredFieldValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_FiledBy_RequiredFieldValidator'));
+  }
+  
+  document.getElementById('Txt_phone_RequiredFieldValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_phone_RequiredFieldValidator'));
+  }
+  
+  document.getElementById('Txt_email_ExpressionValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_email_ExpressionValidator'));
+  }
+  
+  document.getElementById('Txt_email_RequiredFieldValidator').dispose = function() {
+      Array.remove(Page_Validators, document.getElementById('Txt_email_RequiredFieldValidator'));
+  }
+  //]]>
+  </script>
+  </form>
+     
+  </div>
+  </div>

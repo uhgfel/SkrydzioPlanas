@@ -2,7 +2,6 @@ var distan;
 
 var distanall;
 
-
 function PerskaiciuotiAtstumus(){
     Atstumai();
     SpeedFuel();
